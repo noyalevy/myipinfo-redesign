@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP Address Blog & Guides — MyIPInfo.io</title>
+<meta name="description" content="Learn everything about IP addresses, VPNs, internet security, hash functions, and networking. Free guides and tutorials for developers and everyday users.">
+<link rel="stylesheet" href="style.css">
+<style>
+.blog-hero { text-align:center; padding:3rem 0 2rem; }
+.blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; margin:2rem 0; }
+.article-card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; overflow:hidden; text-decoration:none; transition:all 0.25s; display:flex; flex-direction:column; }
+.article-card:hover { border-color:var(--border-glow); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.35); }
+.article-card-img { height:180px; display:flex; align-items:center; justify-content:center; font-size:4rem; }
+.article-card-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; gap:0.75rem; }
+.article-tag { display:inline-flex; align-items:center; padding:3px 10px; border-radius:100px; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+.tag-blue   { background:rgba(99,102,241,0.15); color:var(--accent); }
+.tag-green  { background:rgba(52,211,153,0.12); color:var(--green); }
+.tag-cyan   { background:rgba(34,211,238,0.12); color:var(--cyan); }
+.tag-yellow { background:rgba(251,191,36,0.12); color:var(--yellow); }
+.tag-red    { background:rgba(248,113,113,0.12); color:var(--red); }
+.tag-purple { background:rgba(167,139,250,0.15); color:#a78bfa; }
+.article-title { font-size:1.1rem; font-weight:700; color:var(--text-1); line-height:1.3; }
+.article-excerpt { font-size:0.875rem; color:var(--text-2); line-height:1.6; flex:1; }
+.article-meta { display:flex; align-items:center; gap:0.75rem; font-size:0.75rem; color:var(--text-3); padding-top:0.5rem; border-top:1px solid var(--border); }
+.featured-card { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:0; }
+@media(max-width:700px) { .featured-card { grid-template-columns:1fr; } }
+.featured-img { height:auto; min-height:240px; font-size:5rem; }
+.featured-body { padding:2rem; }
+.featured-title { font-size:1.4rem; }
+.blog-cats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.cat-btn { background:var(--bg-card); border:1px solid var(--border); color:var(--text-2); padding:6px 14px; border-radius:100px; font-size:0.8rem; font-weight:500; cursor:pointer; transition:all 0.2s; font-family:var(--font-ui); }
+.cat-btn:hover, .cat-btn.active { background:var(--accent-dark); color:#fff; border-color:var(--accent-dark); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">My IP</a></li>
+      <li><a href="user-agent.html">User Agent</a></li>
+      <li><a href="speed-test.html">Speed Test</a></li>
+      <li><a href="json-export.html">JSON Export</a></li>
+      <li><a href="hash-generator.html">Hash Generator</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div>
+      <a href="#" class="login-btn">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="blog-hero">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.25);color:var(--cyan);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:1rem">📚 Knowledge Base</div>
+    <h1 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.15;background:linear-gradient(135deg,var(--text-1),var(--text-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.75rem">IP & Networking Guides</h1>
+    <p style="color:var(--text-2);font-size:1.05rem;max-width:540px;margin:0 auto">Everything you need to know about IP addresses, internet security, networking, and developer tools — explained simply.</p>
+  </div>
+
+  <div class="blog-cats">
+    <button class="cat-btn active" onclick="filterCat('all',this)">All Articles</button>
+    <button class="cat-btn" onclick="filterCat('ip',this)">IP Addresses</button>
+    <button class="cat-btn" onclick="filterCat('security',this)">Security</button>
+    <button class="cat-btn" onclick="filterCat('dev',this)">Developer Tools</button>
+    <button class="cat-btn" onclick="filterCat('networking',this)">Networking</button>
+    <button class="cat-btn" onclick="filterCat('privacy',this)">Privacy</button>
+  </div>
+
+  <div class="blog-grid" id="blogGrid">
+
+    <!-- Featured -->
+    <a href="articles/what-is-my-ip-address.html" class="article-card featured-card" data-cat="ip">
+      <div class="article-card-img featured-img" style="background:linear-gradient(135deg,#0d1f3c,#0f2a50)">🌐</div>
+      <div class="article-card-body featured-body">
+        <span class="article-tag tag-blue">⭐ Featured · IP Addresses</span>
+        <div class="article-title featured-title">What Is My IP Address? A Complete Guide for Beginners</div>
+        <div class="article-excerpt">Your IP address is your device's unique identifier on the internet. Learn what it is, how it works, the difference between IPv4 and IPv6, public vs. private IPs, and how to find yours in seconds.</div>
+        <div class="article-meta">
+          <span>📅 May 2025</span><span>·</span><span>⏱ 8 min read</span><span>·</span><span>👁 24,800 views</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="articles/what-is-ipv6.html" class="article-card" data-cat="ip networking">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#0d2a3c,#0f3a50)">🔢</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-cyan">Networking</span>
+        <div class="article-title">What Is IPv6? The Future of Internet Addresses Explained</div>
+        <div class="article-excerpt">The internet is running out of IPv4 addresses. IPv6 is the solution — with 340 undecillion addresses. Learn how it works and why it matters.</div>
+        <div class="article-meta"><span>📅 Apr 2025</span><span>·</span><span>⏱ 6 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/vpn-and-ip-address.html" class="article-card" data-cat="privacy security">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#1a0d3c,#2a0f50)">🔒</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-purple">Privacy & Security</span>
+        <div class="article-title">VPN & IP Addresses: How VPNs Hide Your Real IP</div>
+        <div class="article-excerpt">A VPN masks your real IP address and encrypts your traffic. Learn how VPNs work, when you need one, and how to verify it's actually working.</div>
+        <div class="article-meta"><span>📅 Apr 2025</span><span>·</span><span>⏱ 7 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/what-is-user-agent.html" class="article-card" data-cat="dev">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#0d3c1a,#0f5020)">🖥️</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-green">Developer Tools</span>
+        <div class="article-title">What Is a User Agent? How Browsers Identify Themselves</div>
+        <div class="article-excerpt">Every browser sends a "user agent" string to websites. Learn what it contains, how to read it, and why developers and security researchers care about it.</div>
+        <div class="article-meta"><span>📅 Mar 2025</span><span>·</span><span>⏱ 5 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/what-is-hash-function.html" class="article-card" data-cat="dev security">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#3c2a0d,#50380f)">🔐</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-yellow">Security</span>
+        <div class="article-title">What Is a Hash Function? SHA-256, MD5 & More Explained</div>
+        <div class="article-excerpt">Hash functions convert any data into a fixed-size fingerprint. Learn how MD5, SHA-1, SHA-256, and SHA-512 work and when to use each one.</div>
+        <div class="article-meta"><span>📅 Mar 2025</span><span>·</span><span>⏱ 7 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/how-to-test-internet-speed.html" class="article-card" data-cat="networking">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#0d3c30,#0f4a38)">⚡</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-green">Networking</span>
+        <div class="article-title">How to Test Your Internet Speed: What the Numbers Mean</div>
+        <div class="article-excerpt">Download speed, upload speed, latency, jitter — what do these numbers actually mean? Learn how to test your connection and understand your results.</div>
+        <div class="article-meta"><span>📅 Feb 2025</span><span>·</span><span>⏱ 5 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/public-vs-private-ip.html" class="article-card" data-cat="ip networking">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#0d1a3c,#1a2050)">🏠</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-blue">IP Addresses</span>
+        <div class="article-title">Public vs. Private IP Addresses: What's the Difference?</div>
+        <div class="article-excerpt">Your router has two IP addresses: a public one visible to the internet and a private one for your home network. Learn why both exist and how they work together.</div>
+        <div class="article-meta"><span>📅 Feb 2025</span><span>·</span><span>⏱ 5 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/what-is-dns.html" class="article-card" data-cat="networking">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#1a3c0d,#2a4a10)">🔍</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-cyan">Networking</span>
+        <div class="article-title">What Is DNS? How Domain Names Convert to IP Addresses</div>
+        <div class="article-excerpt">DNS is the internet's phone book — it translates domain names like google.com into IP addresses. Learn how DNS works, why it matters for speed and security.</div>
+        <div class="article-meta"><span>📅 Jan 2025</span><span>·</span><span>⏱ 6 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/ip-geolocation.html" class="article-card" data-cat="ip security">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#3c0d1a,#4a1020)">📍</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-red">IP Addresses</span>
+        <div class="article-title">IP Geolocation: How Websites Know Where You Are</div>
+        <div class="article-excerpt">Websites can approximate your location using your IP address. Learn how IP geolocation works, how accurate it is, and how to protect your location privacy.</div>
+        <div class="article-meta"><span>📅 Jan 2025</span><span>·</span><span>⏱ 6 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/what-is-asn.html" class="article-card" data-cat="networking dev">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#1a0d3c,#20103c)">🏢</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-purple">Networking</span>
+        <div class="article-title">What Is an ASN? Autonomous System Numbers Explained</div>
+        <div class="article-excerpt">Every ISP and major network gets an Autonomous System Number (ASN). Learn what ASNs are, how BGP routing uses them, and how to look one up.</div>
+        <div class="article-meta"><span>📅 Dec 2024</span><span>·</span><span>⏱ 5 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/dynamic-vs-static-ip.html" class="article-card" data-cat="ip networking">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#1a1a0d,#302a10)">⚙️</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-yellow">IP Addresses</span>
+        <div class="article-title">Dynamic vs. Static IP Address: Which One Do You Have?</div>
+        <div class="article-excerpt">Most home internet users have a dynamic IP that changes regularly. Businesses often use static IPs. Learn the difference and when each makes sense.</div>
+        <div class="article-meta"><span>📅 Dec 2024</span><span>·</span><span>⏱ 4 min read</span></div>
+      </div>
+    </a>
+
+    <a href="articles/what-is-json.html" class="article-card" data-cat="dev">
+      <div class="article-card-img" style="background:linear-gradient(135deg,#0d1a1a,#103030)">{ }</div>
+      <div class="article-card-body">
+        <span class="article-tag tag-green">Developer Tools</span>
+        <div class="article-title">What Is JSON? A Beginner's Guide to the Universal Data Format</div>
+        <div class="article-excerpt">JSON (JavaScript Object Notation) is the most popular format for exchanging data on the web. Learn how to read, write, and validate JSON with examples.</div>
+        <div class="article-meta"><span>📅 Nov 2024</span><span>·</span><span>⏱ 5 min read</span></div>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="index.html">My IP</a></li>
+        <li><a href="user-agent.html">User Agent</a></li>
+        <li><a href="speed-test.html">Speed Test</a></li>
+        <li><a href="json-export.html">JSON Export</a></li>
+        <li><a href="hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="articles/what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="articles/what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="articles/ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="articles/vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.article-card').forEach(card => {
+    if (cat === 'all' || (card.dataset.cat||'').includes(cat)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

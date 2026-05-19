@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Export — MyIPInfo.io</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">My IP</a></li>
+      <li><a href="user-agent.html">User Agent</a></li>
+      <li><a href="speed-test.html">Speed Test</a></li>
+      <li><a href="json-export.html" class="active">JSON Export</a></li>
+      <li><a href="hash-generator.html">Hash Generator</a></li><li><a href="blog.html">Blog</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div>
+      <a href="#" class="login-btn">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div style="text-align:center;margin:1.5rem 0 2rem">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(129,140,248,0.1);border:1px solid rgba(129,140,248,0.25);color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:1rem">{ } Data Export</div>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.15;background:linear-gradient(135deg,var(--text-1),var(--text-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">JSON Export</h1>
+    <p style="color:var(--text-2);margin-top:0.5rem">Upload a JSON file to convert to CSV, or export your IP data as JSON.</p>
+  </div>
+
+  <!-- UPLOAD JSON / CONVERT TO CSV -->
+  <div class="tool-card">
+    <h2 style="font-size:1rem;font-weight:700;text-align:center;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem">JSON ↔ CSV Converter</h2>
+
+    <label style="display:block;cursor:pointer" id="uploadLabel">
+      <div style="background:linear-gradient(135deg,#0f1f3c,#1a2d50);border:1px solid var(--border-glow);border-radius:8px;padding:14px 24px;text-align:center;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-1);transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px" id="uploadBtn">
+        UPLOAD JSON FILE &nbsp; ⬆
+      </div>
+      <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleFileUpload(event)">
+    </label>
+
+    <div style="text-align:center;margin:0.75rem 0">
+      <a href="#" onclick="downloadExampleFile(event)" style="color:var(--cyan);font-size:0.875rem;font-weight:600;text-decoration:underline">Download Example File</a>
+    </div>
+
+    <div style="text-align:center;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin:1rem 0 0.75rem">OR INSERT JSON CODE BELOW:</div>
+
+    <textarea class="input-field" id="jsonInput" style="min-height:200px;width:100%;font-size:0.82rem" placeholder='[{"name":"John","age":30},{"name":"Jane","age":25}]' oninput="validateJSON()"></textarea>
+
+    <div id="jsonError" style="color:var(--red);font-size:0.8rem;margin-top:0.5rem;display:none"></div>
+    <div id="jsonSuccess" style="color:var(--green);font-size:0.8rem;margin-top:0.5rem;display:none"></div>
+
+    <div style="margin-top:1.25rem">
+      <button class="btn btn-cyan" style="width:100%;justify-content:center;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px" onclick="exportToCSV()">
+        EXPORT TO CSV &nbsp; ⬇
+      </button>
+    </div>
+
+    <div id="csvPreviewWrap" style="display:none;margin-top:1.25rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+        <div class="result-label" style="margin:0">CSV Preview</div>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-sm btn-secondary" onclick="copyCSV()">📋 Copy CSV</button>
+          <button class="btn btn-sm btn-primary" onclick="downloadCSV()">⬇ Download .csv</button>
+        </div>
+      </div>
+      <div class="json-output" id="csvOutput" style="max-height:240px;color:var(--green)"></div>
+    </div>
+  </div>
+
+  <!-- MY IP DATA EXPORT -->
+  <div class="tool-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
+      <p class="section-title" style="margin-bottom:0;flex:1">Export My IP Data</p>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+        <button class="btn btn-secondary btn-sm" onclick="refreshIPData()">🔄 Refresh</button>
+        <button class="btn btn-secondary btn-sm" onclick="copyJSON()">📋 Copy JSON</button>
+        <button class="btn btn-primary btn-sm" onclick="downloadJSON()">⬇ Download .json</button>
+      </div>
+    </div>
+    <div class="json-output" id="jsonOutput"><span style="color:var(--text-3)">Loading your IP data...</span></div>
+  </div>
+
+  <!-- CUSTOM FIELD PICKER -->
+  <div class="tool-card">
+    <p class="section-title" style="margin-bottom:1rem">Custom Field Selection</p>
+    <div style="color:var(--text-2);font-size:0.875rem;margin-bottom:1rem">Choose which fields to include in your export:</div>
+    <div id="fieldToggles" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem"></div>
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+      <button class="btn btn-secondary btn-sm" onclick="selectAll()">✓ Select All</button>
+      <button class="btn btn-ghost btn-sm" onclick="deselectAll()">✕ Deselect All</button>
+      <button class="btn btn-primary btn-sm" onclick="downloadCustom()">⬇ Download Selected</button>
+      <button class="btn btn-cyan btn-sm" onclick="downloadCustomCSV()">⬇ As CSV</button>
+    </div>
+  </div>
+
+  <!-- LOOKUP ANY IP -->
+  <div class="tool-card">
+    <p class="section-title" style="margin-bottom:1rem">Lookup & Export Any IP</p>
+    <div class="input-group">
+      <input type="text" class="input-field" id="customIP" placeholder="Enter any IP address, e.g. 1.1.1.1">
+      <button class="btn btn-primary" onclick="lookupAndExport()">🔍 Fetch</button>
+    </div>
+    <div id="customJsonWrap" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.75rem">
+        <div class="result-label" style="margin:0">Result</div>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-secondary btn-sm" onclick="copyCustomJSON()">📋 Copy</button>
+          <button class="btn btn-primary btn-sm" onclick="downloadCustomIP()">⬇ JSON</button>
+          <button class="btn btn-cyan btn-sm" onclick="downloadCustomIPCSV()">⬇ CSV</button>
+        </div>
+      </div>
+      <div class="json-output" id="customJsonOutput"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="index.html">My IP</a></li>
+        <li><a href="user-agent.html">User Agent</a></li>
+        <li><a href="speed-test.html">Speed Test</a></li>
+        <li><a href="json-export.html">JSON Export</a></li>
+        <li><a href="hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="articles/what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="articles/what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="articles/ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="articles/vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+let fullData = null;
+let customData = null;
+let csvString = '';
+
+const FIELDS = ['ip','city','region','country_name','country_code','postal','latitude','longitude','timezone','org','asn','continent_code'];
+const FIELD_LABELS = { ip:'IP Address', city:'City', region:'Region', country_name:'Country', country_code:'Country Code', postal:'Postal Code', latitude:'Latitude', longitude:'Longitude', timezone:'Timezone', org:'ISP / Org', asn:'ASN', continent_code:'Continent' };
+
+/* ── JSON → CSV ── */
+function jsonToCSV(data) {
+  let arr = Array.isArray(data) ? data : [data];
+  if (!arr.length) return '';
+  const keys = [...new Set(arr.flatMap(o => Object.keys(o)))];
+  const escape = v => {
+    if (v === null || v === undefined) return '';
+    const s = String(v);
+    return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g,'""')}"` : s;
+  };
+  return [keys.join(','), ...arr.map(row => keys.map(k => escape(row[k])).join(','))].join('\n');
+}
+
+function validateJSON() {
+  const val = document.getElementById('jsonInput').value.trim();
+  const errEl = document.getElementById('jsonError');
+  const okEl  = document.getElementById('jsonSuccess');
+  if (!val) { errEl.style.display='none'; okEl.style.display='none'; return; }
+  try {
+    JSON.parse(val);
+    errEl.style.display = 'none';
+    okEl.textContent = '✅ Valid JSON';
+    okEl.style.display = 'block';
+  } catch(e) {
+    okEl.style.display = 'none';
+    errEl.textContent = '⚠️ Invalid JSON: ' + e.message;
+    errEl.style.display = 'block';
+  }
+}
+
+function handleFileUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('jsonInput').value = e.target.result;
+    validateJSON();
+    showToast(`📁 Loaded: ${file.name}`);
+  };
+  reader.readAsText(file);
+}
+
+function exportToCSV() {
+  const val = document.getElementById('jsonInput').value.trim();
+  if (!val) { showToast('⚠️ Please paste or upload a JSON file first'); return; }
+  try {
+    const parsed = JSON.parse(val);
+    csvString = jsonToCSV(parsed);
+    document.getElementById('csvOutput').textContent = csvString;
+    document.getElementById('csvPreviewWrap').style.display = 'block';
+    showToast('✅ JSON converted to CSV!');
+  } catch(e) {
+    showToast('⚠️ Invalid JSON — please check your input');
+  }
+}
+
+function copyCSV() {
+  if (!csvString) return;
+  navigator.clipboard.writeText(csvString).then(() => showToast('✅ CSV copied!'));
+}
+
+function downloadCSV() {
+  if (!csvString) return;
+  triggerDownload(csvString, `export-${Date.now()}.csv`, 'text/csv');
+  showToast('✅ CSV downloaded!');
+}
+
+function downloadExampleFile(e) {
+  e.preventDefault();
+  const example = JSON.stringify([
+    { ip: '8.8.8.8', city: 'Mountain View', country: 'United States', org: 'Google LLC' },
+    { ip: '1.1.1.1', city: 'Sydney', country: 'Australia', org: 'Cloudflare' }
+  ], null, 2);
+  triggerDownload(example, 'example.json', 'application/json');
+}
+
+/* ── Syntax highlight ── */
+function highlight(json) {
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, m => {
+    let cls = 'json-num';
+    if (/^"/.test(m)) cls = /:$/.test(m) ? 'json-key' : 'json-str';
+    else if (/true|false/.test(m)) cls = 'json-bool';
+    else if (/null/.test(m)) cls = 'json-null';
+    return `<span class="${cls}">${m}</span>`;
+  });
+}
+
+function buildExport(data) {
+  return {
+    meta: { exported_at: new Date().toISOString(), tool: 'myipinfo.io' },
+    network: {
+      ip: data.ip, city: data.city, region: data.region,
+      country: data.country_name, country_code: data.country_code,
+      continent: data.continent_code, postal: data.postal,
+      latitude: data.latitude, longitude: data.longitude,
+      timezone: data.timezone, isp: data.org, asn: data.asn,
+    },
+    browser: {
+      user_agent: navigator.userAgent, language: navigator.language,
+      platform: navigator.platform, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    }
+  };
+}
+
+async function loadIP() {
+  try {
+    const cached = sessionStorage.getItem('ipData');
+    if (cached) return JSON.parse(cached);
+    const res = await fetch('https://ipapi.co/json/');
+    const d = await res.json();
+    sessionStorage.setItem('ipData', JSON.stringify(d));
+    return d;
+  } catch(e) { return null; }
+}
+
+async function refreshIPData() {
+  sessionStorage.removeItem('ipData');
+  document.getElementById('jsonOutput').innerHTML = '<span style="color:var(--text-3)">Loading...</span>';
+  const data = await loadIP();
+  if (!data) { document.getElementById('jsonOutput').innerHTML = '<span style="color:var(--red)">Error</span>'; return; }
+  fullData = buildExport(data);
+  document.getElementById('jsonOutput').innerHTML = highlight(JSON.stringify(fullData, null, 2));
+  renderToggles(data);
+}
+
+function renderToggles(data) {
+  document.getElementById('fieldToggles').innerHTML = FIELDS.map(f => `
+    <label style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-card2);border:1px solid var(--border);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;color:var(--text-2)">
+      <input type="checkbox" name="field" value="${f}" checked style="accent-color:var(--accent-dark)">
+      ${FIELD_LABELS[f]||f}
+    </label>`).join('');
+}
+
+function getChecked() { return [...document.querySelectorAll('input[name="field"]:checked')].map(el=>el.value); }
+function selectAll()   { document.querySelectorAll('input[name="field"]').forEach(el=>el.checked=true); }
+function deselectAll() { document.querySelectorAll('input[name="field"]').forEach(el=>el.checked=false); }
+
+function downloadJSON() {
+  if (!fullData) return;
+  triggerDownload(JSON.stringify(fullData,null,2), `myipinfo-${Date.now()}.json`, 'application/json');
+  showToast('✅ JSON downloaded!');
+}
+
+function copyJSON() {
+  if (!fullData) return;
+  navigator.clipboard.writeText(JSON.stringify(fullData,null,2)).then(()=>showToast('✅ JSON copied!'));
+}
+
+function downloadCustom() {
+  if (!fullData) return;
+  const fields = getChecked();
+  const net = fullData.network;
+  const obj = { meta: { ...fullData.meta, fields }, data: Object.fromEntries(fields.map(f=>[f,net[f]||net['country']||''])) };
+  triggerDownload(JSON.stringify(obj,null,2), `myipinfo-custom-${Date.now()}.json`, 'application/json');
+  showToast('✅ Downloaded!');
+}
+
+function downloadCustomCSV() {
+  if (!fullData) return;
+  const fields = getChecked();
+  const net = fullData.network;
+  const row = Object.fromEntries(fields.map(f=>[f,net[f]||'']));
+  triggerDownload(jsonToCSV([row]), `myipinfo-${Date.now()}.csv`, 'text/csv');
+  showToast('✅ CSV downloaded!');
+}
+
+async function lookupAndExport() {
+  const ip = document.getElementById('customIP').value.trim();
+  if (!ip) return;
+  const wrap = document.getElementById('customJsonWrap');
+  const out  = document.getElementById('customJsonOutput');
+  wrap.style.display = 'block';
+  out.innerHTML = '<span style="color:var(--text-3)">Fetching...</span>';
+  try {
+    const res = await fetch(`https://ipapi.co/${ip}/json/`);
+    customData = await res.json();
+    if (customData.error) throw new Error(customData.reason);
+    out.innerHTML = highlight(JSON.stringify(customData, null, 2));
+  } catch(e) {
+    out.innerHTML = `<span style="color:var(--red)">Error: ${e.message||'Invalid IP'}</span>`;
+    customData = null;
+  }
+}
+
+function copyCustomJSON() {
+  if (!customData) return;
+  navigator.clipboard.writeText(JSON.stringify(customData,null,2)).then(()=>showToast('✅ Copied!'));
+}
+
+function downloadCustomIP() {
+  if (!customData) return;
+  triggerDownload(JSON.stringify(customData,null,2), `ip-${customData.ip||'lookup'}-${Date.now()}.json`, 'application/json');
+  showToast('✅ Downloaded!');
+}
+
+function downloadCustomIPCSV() {
+  if (!customData) return;
+  triggerDownload(jsonToCSV([customData]), `ip-${customData.ip||'lookup'}-${Date.now()}.csv`, 'text/csv');
+  showToast('✅ CSV downloaded!');
+}
+
+function triggerDownload(content, filename, type) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type }));
+  a.download = filename; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+(async () => {
+  const data = await loadIP();
+  if (!data) { document.getElementById('jsonOutput').innerHTML = '<span style="color:var(--red)">Error fetching data</span>'; return; }
+  fullData = buildExport(data);
+  document.getElementById('jsonOutput').innerHTML = highlight(JSON.stringify(fullData, null, 2));
+  renderToggles(data);
+})();
+</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

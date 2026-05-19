@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPN & IP Addresses: How VPNs Hide Your Real IP — MyIPInfo.io</title>
+<meta name="description" content="Learn how VPNs mask your real IP address, encrypt your traffic, and protect your privacy online. Find out how to verify your VPN is actually working.">
+<meta name="keywords" content="vpn ip address, how vpn works, hide ip address, vpn privacy, change ip with vpn">
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(167,139,250,0.15);color:#a78bfa">🔒 Privacy & Security</span>
+    <h1 class="article-h1">VPN & IP Addresses: How VPNs Hide Your Real IP</h1>
+    <div class="article-meta"><span>📅 April 2025</span><span>⏱ 7 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">A VPN (Virtual Private Network) replaces your real IP address with one from its server and encrypts all your internet traffic. But how does it actually work — and how do you know if it's working? This guide explains everything.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#what-is-vpn">What Is a VPN?</a></li><li><a href="#how-vpn-hides-ip">How a VPN Hides Your IP</a></li><li><a href="#what-vpn-protects">What a VPN Protects (and What It Doesn't)</a></li><li><a href="#verify">How to Verify Your VPN Is Working</a></li><li><a href="#vpn-leaks">VPN Leaks: When Your Real IP Shows Through</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="what-is-vpn">What Is a VPN?</h2>
+    <p>A <strong>VPN (Virtual Private Network)</strong> is a service that routes your internet traffic through a server in another location. When you connect to a VPN, your device creates an encrypted tunnel to the VPN server — and all your internet activity passes through that tunnel.</p>
+    <p>From the perspective of websites and services you visit, your traffic appears to come from the <strong>VPN server's IP address</strong>, not yours. This is the core of how VPNs protect your privacy.</p>
+
+    <h2 id="how-vpn-hides-ip">How a VPN Hides Your IP Address</h2>
+    <p>Here's what happens when you connect to a VPN:</p>
+    <ol>
+      <li>Your device connects to a <strong>VPN server</strong> (e.g., in Germany, the US, or Japan)</li>
+      <li>An <strong>encrypted tunnel</strong> is established between your device and the server</li>
+      <li>All your internet traffic is sent through this tunnel</li>
+      <li>The VPN server makes requests on your behalf, using <strong>its own IP address</strong></li>
+      <li>Websites see the VPN server's IP — not your real one</li>
+      <li>Responses come back to the VPN server and are sent through the tunnel to you</li>
+    </ol>
+    <div class="info-box"><div class="info-box-title">💡 Your ISP Still Knows</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">While a VPN hides your activity from websites, your <strong style="color:var(--text-1)">ISP can still see that you're connected to a VPN</strong> (though not what you're doing). Only services like Tor provide stronger anonymity at the network level.</p></div>
+
+    <h2 id="what-vpn-protects">What a VPN Protects (and What It Doesn't)</h2>
+    <h3>✅ What a VPN Does Protect</h3>
+    <ul>
+      <li>Hides your real IP address from websites and services</li>
+      <li>Encrypts your traffic on public Wi-Fi (coffee shops, airports, hotels)</li>
+      <li>Prevents your ISP from seeing which sites you visit</li>
+      <li>Allows you to appear to be in a different country</li>
+      <li>Bypasses geographic restrictions on content</li>
+    </ul>
+    <h3>❌ What a VPN Does NOT Protect</h3>
+    <ul>
+      <li>Cookies and browser fingerprinting — websites can still track you</li>
+      <li>Malware or viruses on your device</li>
+      <li>Your identity if you're logged into accounts (Google, Facebook, etc.)</li>
+      <li>DNS leaks if your VPN is misconfigured</li>
+      <li>Traffic analysis by a determined nation-state attacker</li>
+    </ul>
+
+    <h2 id="verify">How to Verify Your VPN Is Working</h2>
+    <p>The easiest way to verify your VPN is working: <strong>check your IP address before and after connecting.</strong></p>
+    <ol>
+      <li>Disconnect from your VPN and visit <a href="../index.html" style="color:var(--cyan)">MyIPInfo.io</a> — note your real IP address</li>
+      <li>Connect to your VPN</li>
+      <li>Refresh MyIPInfo.io — your IP address should now show the VPN server's IP and a different location</li>
+    </ol>
+    <p>If the IP address hasn't changed, your VPN isn't working properly.</p>
+    <div class="tool-cta"><h3>🔍 Check If Your VPN Is Working</h3><p>Your current IP address and location — updated in real time.</p><a href="../index.html" class="btn btn-primary">Check My IP Now →</a></div>
+
+    <h2 id="vpn-leaks">VPN Leaks: When Your Real IP Shows Through</h2>
+    <p>Even with a VPN enabled, your real IP can leak through in several ways:</p>
+    <h3>DNS Leaks</h3>
+    <p>If your device sends DNS queries outside the VPN tunnel, your ISP can see which domains you're visiting. A good VPN routes all DNS through its own servers. Test for DNS leaks with a dedicated DNS leak test tool.</p>
+    <h3>WebRTC Leaks</h3>
+    <p>Browsers use WebRTC for peer-to-peer communication (video calls, etc.). WebRTC can bypass your VPN and expose your real IP. You can disable WebRTC in browser settings or use a browser extension to block it.</p>
+    <h3>IPv6 Leaks</h3>
+    <p>If your ISP provides IPv6 but your VPN only tunnels IPv4, your real IPv6 address may leak. Check the IPv6 field on MyIPInfo.io while connected to your VPN.</p>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Does a VPN completely hide my IP address? <span>+</span></div><div class="faq-a">A VPN replaces your IP address with the VPN server's IP for all websites you visit. However, your VPN provider itself can see your real IP. Also, watch out for DNS, WebRTC, and IPv6 leaks that can expose your real IP even when a VPN is connected.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I be tracked with a VPN? <span>+</span></div><div class="faq-a">You can still be tracked via browser cookies, fingerprinting, and logged-in accounts (Google, Facebook). A VPN hides your IP but doesn't make you anonymous if you're logged into services that know your identity.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Does a VPN affect internet speed? <span>+</span></div><div class="faq-a">Yes, VPNs typically reduce speed by 10–30% due to encryption overhead and routing through additional servers. Premium VPNs with fast servers and modern protocols (WireGuard) minimize this impact.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Is using a VPN legal? <span>+</span></div><div class="faq-a">VPNs are legal in most countries. However, some countries restrict or ban VPN use (China, Russia, UAE). Always check local laws. Using a VPN for illegal activities is illegal regardless of VPN use.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid"><a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a><a href="ip-geolocation.html" class="related-card"><div class="related-card-icon">📍</div><div class="related-card-title">IP Geolocation Explained</div></a><a href="dynamic-vs-static-ip.html" class="related-card"><div class="related-card-icon">⚙️</div><div class="related-card-title">Dynamic vs. Static IP</div></a></div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

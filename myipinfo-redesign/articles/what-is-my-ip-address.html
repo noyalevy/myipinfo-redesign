@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is My IP Address? A Complete Guide — MyIPInfo.io</title>
+<meta name="description" content="Learn what an IP address is, how to find yours, the difference between IPv4 and IPv6, public vs private IPs, and what your IP reveals about you.">
+<meta name="keywords" content="what is my ip address, find my ip, ip address explained, ipv4 ipv6, public ip private ip">
+<link rel="canonical" href="https://myipinfo.io/articles/what-is-my-ip-address.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Is My IP Address? A Complete Guide","description":"Learn what an IP address is, how to find yours, and the difference between IPv4 and IPv6.","publisher":{"@type":"Organization","name":"MyIPInfo.io","url":"https://myipinfo.io"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an IP address?","acceptedAnswer":{"@type":"Answer","text":"An IP address (Internet Protocol address) is a unique numerical label assigned to every device connected to a network. It serves two main purposes: identifying the device and providing its location on the network."}},{"@type":"Question","name":"How do I find my IP address?","acceptedAnswer":{"@type":"Answer","text":"You can find your public IP address instantly by visiting MyIPInfo.io. For your private IP on Windows, open Command Prompt and type 'ipconfig'. On Mac or Linux, open Terminal and type 'ifconfig' or 'ip addr'."}},{"@type":"Question","name":"What is the difference between IPv4 and IPv6?","acceptedAnswer":{"@type":"Answer","text":"IPv4 uses 32-bit addresses (e.g., 192.168.1.1) supporting about 4.3 billion unique addresses. IPv6 uses 128-bit addresses (e.g., 2001:0db8::1) supporting 340 undecillion addresses, solving IPv4's exhaustion problem."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">My IP</a></li>
+      <li><a href="../user-agent.html">User Agent</a></li>
+      <li><a href="../speed-test.html">Speed Test</a></li>
+      <li><a href="../json-export.html">JSON Export</a></li>
+      <li><a href="../hash-generator.html">Hash Generator</a></li>
+      <li><a href="../blog.html" class="active">Blog</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+    <div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(99,102,241,0.15);color:var(--accent)">📡 IP Addresses</span>
+    <h1 class="article-h1">What Is My IP Address? A Complete Guide for Beginners</h1>
+    <div class="article-meta">
+      <span>📅 May 2025</span>
+      <span>⏱ 8 min read</span>
+      <span>👁 24,800 views</span>
+      <span>✍️ MyIPInfo Team</span>
+    </div>
+  </div>
+
+  <p class="article-lead">Your IP address is your device's unique identifier on the internet — like a home address, but for data packets. In this guide, you'll learn exactly what it is, how it works, how to find yours, and what it reveals about you.</p>
+
+  <div class="toc">
+    <div class="toc-title">📋 Table of Contents</div>
+    <ol>
+      <li><a href="#what-is">What Is an IP Address?</a></li>
+      <li><a href="#how-it-works">How IP Addresses Work</a></li>
+      <li><a href="#ipv4-vs-ipv6">IPv4 vs. IPv6</a></li>
+      <li><a href="#public-vs-private">Public vs. Private IP</a></li>
+      <li><a href="#how-to-find">How to Find Your IP Address</a></li>
+      <li><a href="#what-it-reveals">What Does Your IP Reveal?</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <div class="article-body">
+
+    <h2 id="what-is">What Is an IP Address?</h2>
+    <p>An <strong>IP address</strong> (Internet Protocol address) is a unique numerical label assigned to every device connected to a computer network. Think of it like a postal address for your device — without it, data wouldn't know where to go.</p>
+    <p>Every time you visit a website, stream a video, or send an email, your device sends and receives data packets. Each packet contains the sender's IP address and the recipient's IP address, so the internet knows exactly where to deliver it.</p>
+
+    <div class="info-box">
+      <div class="info-box-title">💡 Quick Fact</div>
+      <p style="margin:0;color:var(--text-2);font-size:0.9rem">IP stands for <strong style="color:var(--text-1)">Internet Protocol</strong> — the set of rules governing how data is sent and received over the internet. It was first defined in 1974 and has been the backbone of internet communication ever since.</p>
+    </div>
+
+    <h2 id="how-it-works">How IP Addresses Work</h2>
+    <p>When you type a website address into your browser, a series of steps happen in milliseconds:</p>
+    <ol>
+      <li>Your device asks a <strong>DNS server</strong> to translate the domain name (e.g., google.com) into an IP address</li>
+      <li>Your router assigns your request your <strong>public IP address</strong></li>
+      <li>The data packets travel across the internet to the destination server</li>
+      <li>The server sends the response back to your IP address</li>
+      <li>Your router directs the response to the correct device on your home network</li>
+    </ol>
+    <p>This entire process happens so fast that you never notice it — typically under 100 milliseconds.</p>
+
+    <h2 id="ipv4-vs-ipv6">IPv4 vs. IPv6: What's the Difference?</h2>
+    <p>There are two versions of IP addresses in use today:</p>
+
+    <h3>IPv4 (Internet Protocol version 4)</h3>
+    <p>IPv4 is the original IP format, introduced in 1983. It uses <strong>32-bit addresses</strong>, written as four groups of numbers separated by dots:</p>
+    <pre><code>199.203.79.17</code></pre>
+    <p>IPv4 supports approximately <strong>4.3 billion unique addresses</strong>. This sounds like a lot, but with billions of devices online, we've nearly run out. IPv4 address exhaustion is a real problem that IPv6 was designed to solve.</p>
+
+    <h3>IPv6 (Internet Protocol version 6)</h3>
+    <p>IPv6 uses <strong>128-bit addresses</strong>, written as eight groups of hexadecimal values separated by colons:</p>
+    <pre><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></pre>
+    <p>IPv6 supports <strong>340 undecillion addresses</strong> — that's 340 followed by 36 zeros. Every grain of sand on Earth could have billions of IP addresses. The transition to IPv6 is ongoing, with most modern devices and ISPs supporting both.</p>
+
+    <h2 id="public-vs-private">Public vs. Private IP Address</h2>
+    <p>Your device actually uses <strong>two different IP addresses</strong> simultaneously:</p>
+
+    <h3>Public IP Address</h3>
+    <p>Your <strong>public IP address</strong> is what the wider internet sees. It's assigned to your router by your Internet Service Provider (ISP) and is unique globally. This is the IP address that websites, apps, and servers see when you connect to them.</p>
+
+    <h3>Private IP Address</h3>
+    <p>Your <strong>private IP address</strong> is what your router assigns to your device within your home or office network. These addresses are not visible on the internet and are reused across millions of networks. Common private IP ranges include:</p>
+    <ul>
+      <li><code>192.168.x.x</code> — most home routers</li>
+      <li><code>10.x.x.x</code> — corporate networks</li>
+      <li><code>172.16.x.x – 172.31.x.x</code> — medium-sized networks</li>
+    </ul>
+
+    <div class="warning-box">
+      <div class="warning-box-title">⚠️ Privacy Note</div>
+      <p style="margin:0;color:var(--text-2);font-size:0.9rem">Your public IP address can be used to approximate your location (city level) and identify your ISP. Using a VPN replaces your real IP with the VPN server's IP, protecting your privacy.</p>
+    </div>
+
+    <h2 id="how-to-find">How to Find Your IP Address</h2>
+
+    <h3>Find Your Public IP (Easiest Method)</h3>
+    <p>Simply visit <a href="../index.html" style="color:var(--cyan)">MyIPInfo.io</a> — your public IP address is detected automatically and displayed at the top of the page, along with your location, ISP, and more details.</p>
+
+    <h3>Find Your Private IP on Windows</h3>
+    <ol>
+      <li>Press <code>Windows + R</code>, type <code>cmd</code>, press Enter</li>
+      <li>Type <code>ipconfig</code> and press Enter</li>
+      <li>Look for <strong>IPv4 Address</strong> under your network adapter</li>
+    </ol>
+
+    <h3>Find Your Private IP on Mac</h3>
+    <ol>
+      <li>Open <strong>System Settings → Network</strong></li>
+      <li>Select your active connection (Wi-Fi or Ethernet)</li>
+      <li>Your IP appears next to "IP address"</li>
+    </ol>
+
+    <h3>Find Your Private IP on Linux</h3>
+    <pre><code>ip addr show
+# or
+hostname -I</code></pre>
+
+    <h2 id="what-it-reveals">What Does Your IP Address Reveal?</h2>
+    <p>Your IP address can reveal:</p>
+    <ul>
+      <li><strong>Approximate location</strong> — typically accurate to city level (not your street address)</li>
+      <li><strong>Your ISP</strong> — the company providing your internet service</li>
+      <li><strong>General region and timezone</strong></li>
+      <li><strong>Whether you're using a VPN or proxy</strong> — many IP reputation databases flag VPN exit nodes</li>
+    </ul>
+    <p>What your IP address <strong>cannot</strong> reveal: your exact home address, your name, your browsing history, or your personal details. This information is only accessible through legal channels (subpoena to your ISP).</p>
+
+    <div class="tool-cta">
+      <h3>🔍 Check Your IP Address Now</h3>
+      <p>See your full IP details — location, ISP, ASN, coordinates, and more.</p>
+      <a href="../index.html" class="btn btn-primary">View My IP Details →</a>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">What is an IP address? <span>+</span></div>
+        <div class="faq-a">An IP address (Internet Protocol address) is a unique numerical label assigned to every device on a network. It identifies the device and enables communication — like a home address for your computer on the internet.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">Can someone find my location from my IP address? <span>+</span></div>
+        <div class="faq-a">Yes, but only approximately. Your IP address can reveal your city, region, ISP, and country — but not your exact street address or personal identity. To get that information, someone would need a court order directing your ISP.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">Does my IP address change? <span>+</span></div>
+        <div class="faq-a">Most home internet users have a <strong>dynamic IP address</strong> that changes periodically (when you restart your router or after a set period). Businesses often pay for <strong>static IPs</strong> that never change. Your IP also changes when you use a VPN.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">What is the difference between IPv4 and IPv6? <span>+</span></div>
+        <div class="faq-a">IPv4 uses 32-bit addresses (like 192.168.1.1) and supports about 4.3 billion addresses. IPv6 uses 128-bit addresses (like 2001:db8::1) and supports 340 undecillion addresses. IPv6 was created to solve IPv4 address exhaustion.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">How do I hide my IP address? <span>+</span></div>
+        <div class="faq-a">The most effective methods are: (1) <strong>VPN</strong> — routes your traffic through another server, replacing your IP; (2) <strong>Tor Browser</strong> — routes traffic through multiple relays; (3) <strong>Proxy server</strong> — similar to a VPN but typically less secure.</div>
+      </div>
+    </div>
+
+    <div class="related-articles">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2>
+      <div class="related-grid">
+        <a href="what-is-ipv6.html" class="related-card"><div class="related-card-icon">🔢</div><div class="related-card-title">What Is IPv6? The Future of Internet Addresses</div></a>
+        <a href="public-vs-private-ip.html" class="related-card"><div class="related-card-icon">🏠</div><div class="related-card-title">Public vs. Private IP Addresses Explained</div></a>
+        <a href="vpn-and-ip-address.html" class="related-card"><div class="related-card-icon">🔒</div><div class="related-card-title">How VPNs Hide Your Real IP Address</div></a>
+        <a href="ip-geolocation.html" class="related-card"><div class="related-card-icon">📍</div><div class="related-card-title">IP Geolocation: How Websites Know Where You Are</div></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+function toggleFAQ(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+  el.querySelector('span').textContent = item.classList.contains('open') ? '−' : '+';
+}
+</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

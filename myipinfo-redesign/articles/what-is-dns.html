@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is DNS? How Domain Names Convert to IP Addresses — MyIPInfo.io</title>
+<meta name="description" content="DNS is the internet's phone book — it translates domain names like google.com into IP addresses. Learn how DNS works, DNS servers, caching, and security.">
+<meta name="keywords" content="what is dns, how dns works, dns server explained, domain name system, dns lookup, dns resolution">
+<link rel="canonical" href="https://myipinfo.io/articles/what-is-dns.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is DNS?","acceptedAnswer":{"@type":"Answer","text":"DNS (Domain Name System) is a hierarchical system that translates human-readable domain names (like google.com) into IP addresses (like 142.250.185.78) that computers use to communicate. It acts as the internet's phone book."}},{"@type":"Question","name":"What happens when DNS fails?","acceptedAnswer":{"@type":"Answer","text":"When DNS fails, domain names cannot be resolved to IP addresses. Websites appear unreachable even if the servers are online. You may see errors like 'DNS_PROBE_FINISHED_NXDOMAIN' or 'Server not found'. Switching to a public DNS server like Google (8.8.8.8) or Cloudflare (1.1.1.1) often fixes this."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(34,211,238,0.12);color:var(--cyan)">🔍 Networking</span>
+    <h1 class="article-h1">What Is DNS? How Domain Names Convert to IP Addresses</h1>
+    <div class="article-meta"><span>📅 January 2025</span><span>⏱ 6 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">Every time you type a website address, your computer silently asks DNS to translate it into an IP address. This happens in milliseconds — but it's one of the most critical systems on the internet. Without DNS, you'd need to memorize IP addresses to visit websites.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#what-is">What Is DNS?</a></li><li><a href="#how-works">How DNS Resolution Works</a></li><li><a href="#servers">Types of DNS Servers</a></li><li><a href="#records">Common DNS Record Types</a></li><li><a href="#fast">How to Speed Up DNS</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="what-is">What Is DNS?</h2>
+    <p>The <strong>Domain Name System (DNS)</strong> is a distributed, hierarchical database that maps human-readable domain names to machine-readable IP addresses. Think of it as the internet's phone book: you look up a name (google.com) and get a number (142.250.185.78).</p>
+    <p>DNS was created in 1983 to replace a single <code>HOSTS.TXT</code> file that all computers downloaded manually. Today it handles billions of queries per day across millions of servers worldwide.</p>
+    <div class="info-box"><div class="info-box-title">💡 Without DNS</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">To visit Google without DNS, you'd type <code style="color:var(--cyan)">142.250.185.78</code> into your browser instead of google.com. Every website, every service, every API call would require memorizing or looking up raw IP addresses.</p></div>
+
+    <h2 id="how-works">How DNS Resolution Works</h2>
+    <p>When you type <code>myipinfo.io</code> in your browser, here's the full sequence:</p>
+    <ol>
+      <li><strong>Browser cache</strong> — The browser checks its own DNS cache. If it recently visited this site, it uses the saved IP.</li>
+      <li><strong>OS cache</strong> — If not cached in the browser, the OS checks its own resolver cache.</li>
+      <li><strong>Recursive resolver</strong> — Your ISP's DNS server (or a public resolver like 8.8.8.8) receives the query.</li>
+      <li><strong>Root nameserver</strong> — The resolver asks a root server which nameserver handles <code>.io</code> domains.</li>
+      <li><strong>TLD nameserver</strong> — The <code>.io</code> top-level domain server says which nameserver handles <code>myipinfo.io</code>.</li>
+      <li><strong>Authoritative nameserver</strong> — This server has the actual DNS records and returns the IP address.</li>
+      <li><strong>Response cached and returned</strong> — The IP is cached for future queries and returned to your browser.</li>
+    </ol>
+    <p>The entire process typically takes <strong>20–120 milliseconds</strong> — usually only for the first visit. Subsequent visits use cached results and are nearly instant.</p>
+
+    <h2 id="servers">Types of DNS Servers</h2>
+    <ul>
+      <li><strong>Recursive resolver</strong> — Your first point of contact. Usually provided by your ISP or a public service (Google 8.8.8.8, Cloudflare 1.1.1.1). Does the work of asking other servers.</li>
+      <li><strong>Root nameservers</strong> — 13 sets of servers (operated by organizations like ICANN, NASA, and Verisign) that know where to find TLD nameservers. The backbone of DNS.</li>
+      <li><strong>TLD nameservers</strong> — Handle top-level domains like <code>.com</code>, <code>.org</code>, <code>.io</code>, <code>.net</code>.</li>
+      <li><strong>Authoritative nameservers</strong> — The final authority for a specific domain. They hold the actual DNS records configured by the domain owner.</li>
+    </ul>
+
+    <h2 id="records">Common DNS Record Types</h2>
+    <div style="overflow-x:auto;margin:1rem 0">
+      <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
+        <thead><tr style="background:var(--bg-card2)"><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Record</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Purpose</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Example</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">A</td><td style="padding:10px 14px;border:1px solid var(--border)">Maps domain → IPv4</td><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-2)">example.com → 93.184.216.34</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">AAAA</td><td style="padding:10px 14px;border:1px solid var(--border)">Maps domain → IPv6</td><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-2)">example.com → 2606:2800::1</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">CNAME</td><td style="padding:10px 14px;border:1px solid var(--border)">Alias to another domain</td><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-2)">www → example.com</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">MX</td><td style="padding:10px 14px;border:1px solid var(--border)">Email mail server</td><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-2)">→ mail.example.com</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">TXT</td><td style="padding:10px 14px;border:1px solid var(--border)">Text data (SPF, DKIM, verification)</td><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-2)">"v=spf1 include:..."</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">NS</td><td style="padding:10px 14px;border:1px solid var(--border)">Authoritative nameservers</td><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-2)">ns1.cloudflare.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="fast">How to Speed Up DNS (Switch to a Faster Server)</h2>
+    <p>Your ISP's default DNS server may be slow or unreliable. You can switch to a faster public DNS server in your network settings:</p>
+    <ul>
+      <li><strong>Cloudflare</strong> — <code>1.1.1.1</code> and <code>1.0.0.1</code> — Fastest globally, privacy-focused</li>
+      <li><strong>Google</strong> — <code>8.8.8.8</code> and <code>8.8.4.4</code> — Reliable, widely used</li>
+      <li><strong>OpenDNS</strong> — <code>208.67.222.222</code> — Includes parental controls</li>
+      <li><strong>Quad9</strong> — <code>9.9.9.9</code> — Blocks malicious domains automatically</li>
+    </ul>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can DNS affect my internet speed? <span>+</span></div><div class="faq-a">Yes. Slow DNS resolution adds latency before every new connection. Switching from your ISP's DNS to Cloudflare (1.1.1.1) or Google (8.8.8.8) can noticeably improve browsing speed, especially for the first load of each website.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is DNS caching? <span>+</span></div><div class="faq-a">DNS responses include a TTL (Time to Live) value — how long the result should be cached. Your browser, OS, and resolver all cache DNS results. This means repeated visits to the same site don't require a fresh DNS lookup, making subsequent visits faster.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is DNS over HTTPS (DoH)? <span>+</span></div><div class="faq-a">Traditional DNS queries are sent in plain text — your ISP and anyone on your network can see which domains you're looking up. DNS over HTTPS (DoH) encrypts these queries, preventing snooping. Chrome, Firefox, and Windows 11 all support DoH.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What does "flush DNS" mean? <span>+</span></div><div class="faq-a">Flushing DNS clears your local DNS cache, forcing fresh lookups. This fixes issues where you're visiting a stale cached version of a site that has moved to a new IP. On Windows: run <code>ipconfig /flushdns</code> in Command Prompt.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid">
+      <a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a>
+      <a href="what-is-asn.html" class="related-card"><div class="related-card-icon">🏢</div><div class="related-card-title">What Is an ASN?</div></a>
+      <a href="vpn-and-ip-address.html" class="related-card"><div class="related-card-icon">🔒</div><div class="related-card-title">VPN & IP Addresses</div></a>
+    </div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

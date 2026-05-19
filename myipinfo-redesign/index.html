@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyIPInfo.io — What Is My IP Address? Free IP Lookup</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">My IP</a></li>
+      <li><a href="user-agent.html">User Agent</a></li>
+      <li><a href="speed-test.html">Speed Test</a></li>
+      <li><a href="json-export.html">JSON Export</a></li>
+      <li><a href="hash-generator.html">Hash Generator</a></li><li><a href="blog.html">Blog</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div>
+      <a href="#" class="login-btn">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Search Bar -->
+  <div class="search-bar-wrap">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Enter IP Address" onkeydown="if(event.key==='Enter') doSearch()">
+      <button onclick="doSearch()">🔍</button>
+    </div>
+  </div>
+
+  <!-- Main IP Panel -->
+  <div class="ip-panel">
+    <div class="ip-panel-grid">
+
+      <!-- IPv4 + IPv6 -->
+      <div class="ip-box">
+        <div class="ip-box-label">MY IP ADDRESS IS:</div>
+        <div class="ip-version-row">
+          <span class="ip-version-tag">IPv4</span>
+          <span class="ip-version-val" id="ipv4Val">Detecting...</span>
+          <span class="copy-icon" onclick="copyText('ipv4Val','IPv4')" title="Copy">⧉</span>
+        </div>
+        <hr class="ip-divider">
+        <div class="ip-version-row">
+          <span class="ip-version-tag" style="color:var(--accent);background:rgba(129,140,248,0.12)">IPv6</span>
+          <span class="ip-version-val not-detected" id="ipv6Val">Not Detected!</span>
+        </div>
+      </div>
+
+      <!-- IP Info -->
+      <div class="ip-box">
+        <div class="ip-box-label">MY IP INFO IS:</div>
+        <div class="ip-info-row"><span class="ip-info-key">ISP:</span><span class="ip-info-val loading" id="info-isp">...</span></div>
+        <div class="ip-info-row"><span class="ip-info-key">City:</span><span class="ip-info-val loading" id="info-city">...</span></div>
+        <div class="ip-info-row"><span class="ip-info-key">Region:</span><span class="ip-info-val loading" id="info-region">...</span></div>
+        <div class="ip-info-row"><span class="ip-info-key">Country:</span><span class="ip-info-val loading" id="info-country">...</span></div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-box" id="mapBox">
+        <div class="map-placeholder" id="mapPlaceholder">
+          <div style="font-size:2rem">🗺️</div>
+          <div>Loading map...</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-bar" style="margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap">
+      <button class="btn-show-details" onclick="toggleDetails()">
+        SHOW COMPLETE IP DETAILS ›
+      </button>
+      <button class="btn btn-sm btn-dark" onclick="addToHistory()" style="height:40px;padding:0 18px;font-size:0.8rem;font-weight:700;letter-spacing:0.05em">+ ADD IP TO HISTORY</button>
+      <button class="btn btn-sm btn-secondary" onclick="openHistory()" style="height:40px;padding:0 18px;font-size:0.8rem;font-weight:700;letter-spacing:0.05em">🕐 SHOW MY IP HISTORY</button>
+    </div>
+  </div>
+
+  <!-- Detail Strip (shown after load) -->
+  <div class="detail-strip" id="detailStrip" style="display:none">
+    COMPLETE IP & ASN DETAILS FOR &nbsp;
+    <strong id="strip-ipv4">—</strong>
+    <span id="strip-copy" class="copy-icon" onclick="copyText('strip-ipv4','IPv4')" title="Copy">⧉</span>
+    &nbsp;|&nbsp; IPv6: <strong id="strip-ipv6">NOT DETECTED!</strong>
+  </div>
+
+  <!-- Complete Details (hidden by default) -->
+  <div class="details-section" id="detailsSection">
+    <div class="details-grid">
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="hicon">ℹ️</div>
+          General Info
+        </div>
+        <div class="detail-row"><span class="detail-key">IPv4:</span><span class="detail-val" id="d-ipv4">—</span></div>
+        <div class="detail-row"><span class="detail-key">IPv6:</span><span class="detail-val" id="d-ipv6">Not Detected!</span></div>
+        <div class="detail-row"><span class="detail-key">Decimal:</span><span class="detail-val" id="d-decimal">—</span></div>
+        <div class="detail-row"><span class="detail-key">Hostname:</span><span class="detail-val" id="d-hostname">—</span></div>
+        <div class="detail-row"><span class="detail-key">ISP:</span><span class="detail-val" id="d-isp">—</span></div>
+        <div class="detail-row"><span class="detail-key">ASN:</span><span class="detail-val" id="d-asn">—</span></div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="hicon">👤</div>
+          ASN Information
+        </div>
+        <div class="detail-row"><span class="detail-key">ASN Name:</span><span class="detail-val" id="d-asnname">—</span></div>
+        <div class="detail-row"><span class="detail-key">Organization:</span><span class="detail-val" id="d-org">—</span></div>
+        <div class="detail-row"><span class="detail-key">Infrastructure Provider:</span><span class="detail-val" id="d-infra">—</span></div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="hicon">🔧</div>
+          Network / Technical Info
+        </div>
+        <div class="detail-row"><span class="detail-key">CIDR Range:</span><span class="detail-val" id="d-cidr">—</span></div>
+        <div class="detail-row"><span class="detail-key">Assignment:</span><span class="detail-val" id="d-assign">—</span></div>
+        <div class="detail-row"><span class="detail-key">Services:</span><span class="detail-val" id="d-services">None detected</span></div>
+        <div class="detail-row"><span class="detail-key">Timezone:</span><span class="detail-val" id="d-tz">—</span></div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="hicon">📍</div>
+          Location
+        </div>
+        <div class="detail-row"><span class="detail-key">Country:</span><span class="detail-val" id="d-country">—</span></div>
+        <div class="detail-row"><span class="detail-key">Region:</span><span class="detail-val" id="d-region">—</span></div>
+        <div class="detail-row"><span class="detail-key">City:</span><span class="detail-val" id="d-city">—</span></div>
+        <div class="detail-row"><span class="detail-key">Latitude:</span><span class="detail-val" id="d-lat">—</span></div>
+        <div class="detail-row"><span class="detail-key">Longitude:</span><span class="detail-val" id="d-lon">—</span></div>
+        <div class="detail-row"><span class="detail-key">Postal Code:</span><span class="detail-val" id="d-postal">—</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Developer Tools -->
+  <p class="section-title" style="margin-top:2rem">Developer Tools</p>
+  <div class="tools-grid">
+    <a href="user-agent.html" class="tool-tile">
+      <div class="tool-tile-icon">🖥️</div>
+      <div class="tool-tile-name">User Agent</div>
+      <div class="tool-tile-desc">Inspect your browser's user agent string and parsed details.</div>
+    </a>
+    <a href="speed-test.html" class="tool-tile">
+      <div class="tool-tile-icon">⚡</div>
+      <div class="tool-tile-name">Speed Test</div>
+      <div class="tool-tile-desc">Measure your download speed, upload speed, and latency.</div>
+    </a>
+    <a href="json-export.html" class="tool-tile">
+      <div class="tool-tile-icon">{ }</div>
+      <div class="tool-tile-name">JSON Export</div>
+      <div class="tool-tile-desc">Export all your IP and network data as JSON or CSV.</div>
+    </a>
+    <a href="hash-generator.html" class="tool-tile">
+      <div class="tool-tile-icon">#</div>
+      <div class="tool-tile-name">Hash Generator</div>
+      <div class="tool-tile-desc">Generate dozens of cryptographic hash formats instantly.</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- IP History Modal -->
+<div class="modal-overlay" id="historyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">🕐 My IP History</span>
+      <button class="modal-close" onclick="closeHistory()">✕</button>
+    </div>
+    <div id="historyList"></div>
+    <div style="margin-top:1rem;display:flex;gap:0.75rem">
+      <button class="btn btn-ghost btn-sm" onclick="clearHistory()">🗑 Clear All</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="index.html">My IP</a></li>
+        <li><a href="user-agent.html">User Agent</a></li>
+        <li><a href="speed-test.html">Speed Test</a></li>
+        <li><a href="json-export.html">JSON Export</a></li>
+        <li><a href="hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="articles/what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="articles/what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="articles/ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="articles/vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let ipData = null;
+let detailsVisible = false;
+
+/* ── IP to Decimal ── */
+function ipToDecimal(ip) {
+  if (!ip || ip.includes(':')) return '—';
+  const parts = ip.split('.');
+  if (parts.length !== 4) return '—';
+  return parts.reduce((acc, oct) => (acc * 256 + parseInt(oct)), 0).toString();
+}
+
+/* ── Approximate CIDR from prefix_length ── */
+function buildCIDR(ip, prefix) {
+  if (!ip || !prefix) return '—';
+  const parts = ip.split('.').map(Number);
+  const mask = ~((1 << (32 - prefix)) - 1) >>> 0;
+  const net = parts.reduce((a,b,i) => a | (b << ((3-i)*8)), 0) >>> 0;
+  const base = net & mask;
+  const oct = [(base>>>24)&255,(base>>>16)&255,(base>>>8)&255,base&255];
+  return `${oct.join('.')}/${prefix}`;
+}
+
+/* ── Load IP data ── */
+async function loadIPData(ip = '') {
+  const url = ip ? `https://ipapi.co/${ip}/json/` : 'https://ipapi.co/json/';
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error();
+    return await res.json();
+  } catch(e) { return null; }
+}
+
+/* ── Render data ── */
+function renderData(data) {
+  if (!data || data.error) {
+    document.getElementById('ipv4Val').textContent = 'Error fetching IP';
+    return;
+  }
+  ipData = data;
+  sessionStorage.setItem('ipData', JSON.stringify(data));
+
+  const ipv4 = data.ip || '—';
+
+  document.getElementById('ipv4Val').textContent = ipv4;
+  document.getElementById('strip-ipv4').textContent = ipv4;
+
+  const setVal = (id, val) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = val || '—';
+    el.classList.remove('loading');
+  };
+
+  setVal('info-isp',    data.org || data.as);
+  setVal('info-city',   data.city);
+  setVal('info-region', data.region);
+  setVal('info-country',data.country_name);
+
+  // Detail strip
+  document.getElementById('detailStrip').style.display = 'flex';
+
+  // Detail cards
+  setVal('d-ipv4',    ipv4);
+  setVal('d-decimal', ipToDecimal(ipv4));
+  setVal('d-hostname',data.hostname || ipv4);
+  setVal('d-isp',     data.org || data.as);
+  setVal('d-asn',     data.asn);
+  setVal('d-asnname', data.asn ? `${data.asn} - ${(data.org||'').split(' ')[0]}` : '—');
+  setVal('d-org',     data.org);
+  setVal('d-infra',   (data.org||'').split(' ')[0] || '—');
+  setVal('d-cidr',    buildCIDR(ipv4, data.network ? data.network.split('/')[1] : null) );
+  setVal('d-assign',  'ALLOCATED PA');
+  setVal('d-tz',      data.timezone);
+  setVal('d-country', `${data.country_name} (${data.country_code})`);
+  setVal('d-region',  data.region);
+  setVal('d-city',    data.city);
+  setVal('d-lat',     data.latitude?.toString());
+  setVal('d-lon',     data.longitude?.toString());
+  setVal('d-postal',  data.postal);
+
+  // Map
+  if (data.latitude && data.longitude) {
+    const lat = data.latitude, lon = data.longitude;
+    const delta = 0.3;
+    const mapBox = document.getElementById('mapBox');
+    document.getElementById('mapPlaceholder').style.display = 'none';
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon-delta},${lat-delta},${lon+delta},${lat+delta}&layer=mapnik&marker=${lat},${lon}`;
+    iframe.style.cssText = 'width:100%;height:100%;min-height:220px;border:none;border-radius:12px;';
+    iframe.loading = 'lazy';
+    mapBox.appendChild(iframe);
+  }
+}
+
+/* ── Toggle details ── */
+function toggleDetails() {
+  detailsVisible = !detailsVisible;
+  const sec = document.getElementById('detailsSection');
+  const btn = document.querySelector('.btn-show-details');
+  sec.classList.toggle('visible', detailsVisible);
+  btn.textContent = detailsVisible ? 'HIDE COMPLETE IP DETAILS ∧' : 'SHOW COMPLETE IP DETAILS ›';
+}
+
+/* ── Search ── */
+async function doSearch() {
+  const val = document.getElementById('searchInput').value.trim();
+  if (!val) return;
+  const data = await loadIPData(val);
+  if (!data || data.error) { showToast('⚠️ Could not find that IP address'); return; }
+  renderData(data);
+  if (!detailsVisible) toggleDetails();
+  showToast(`✅ Loaded data for ${data.ip}`);
+}
+
+/* ── Copy ── */
+function copyText(elId, label) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  navigator.clipboard.writeText(el.textContent).then(() => showToast(`✅ ${label} copied!`));
+}
+
+/* ── IP History ── */
+function getHistory() { return JSON.parse(localStorage.getItem('ipHistory') || '[]'); }
+function saveHistory(h) { localStorage.setItem('ipHistory', JSON.stringify(h)); }
+
+function addToHistory() {
+  if (!ipData) return;
+  const h = getHistory();
+  const entry = {
+    ip: ipData.ip,
+    country: ipData.country_name || '',
+    city: ipData.city || '',
+    isp: ipData.org || '',
+    time: new Date().toLocaleString()
+  };
+  if (!h.find(e => e.ip === entry.ip)) h.unshift(entry);
+  else h.unshift(h.splice(h.findIndex(e => e.ip === entry.ip), 1)[0]);
+  if (h.length > 50) h.pop();
+  saveHistory(h);
+  showToast(`✅ ${ipData.ip} added to history`);
+}
+
+function openHistory() {
+  const h = getHistory();
+  const list = document.getElementById('historyList');
+  if (!h.length) {
+    list.innerHTML = '<div class="history-empty">No IP history yet. Browse different IPs and click "Add to History".</div>';
+  } else {
+    list.innerHTML = h.map(e => `
+      <div class="history-item">
+        <div>
+          <div class="history-ip">${e.ip}</div>
+          <div class="history-meta">${e.country}${e.city ? ', '+e.city : ''} · ${e.isp}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="history-meta">${e.time}</span>
+          <button class="btn btn-sm btn-ghost" onclick="lookupHistoryIP('${e.ip}')">Look Up</button>
+        </div>
+      </div>`).join('');
+  }
+  document.getElementById('historyModal').classList.add('open');
+}
+
+function closeHistory() { document.getElementById('historyModal').classList.remove('open'); }
+function clearHistory() { saveHistory([]); openHistory(); showToast('🗑 History cleared'); }
+async function lookupHistoryIP(ip) {
+  closeHistory();
+  document.getElementById('searchInput').value = ip;
+  const data = await loadIPData(ip);
+  if (data) { renderData(data); if (!detailsVisible) toggleDetails(); }
+}
+
+document.getElementById('historyModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeHistory();
+});
+
+/* ── Toast ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ── Init ── */
+(async () => {
+  const cached = sessionStorage.getItem('ipData');
+  if (cached) { renderData(JSON.parse(cached)); return; }
+  const data = await loadIPData();
+  renderData(data);
+})();
+</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

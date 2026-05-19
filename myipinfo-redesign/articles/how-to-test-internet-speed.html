@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Test Your Internet Speed: What the Numbers Mean — MyIPInfo.io</title>
+<meta name="description" content="Learn how to test your internet speed, what download speed, upload speed, latency, and jitter mean, and how to interpret your results.">
+<meta name="keywords" content="internet speed test, download speed upload speed, what is latency, how to test wifi speed, mbps explained">
+<link rel="canonical" href="https://myipinfo.io/articles/how-to-test-internet-speed.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good internet speed?","acceptedAnswer":{"@type":"Answer","text":"For most users, 25 Mbps download is the minimum for comfortable use. 100 Mbps handles HD streaming and video calls easily. 500 Mbps+ is ideal for households with multiple users and devices or for gaming and 4K streaming."}},{"@type":"Question","name":"What is the difference between download and upload speed?","acceptedAnswer":{"@type":"Answer","text":"Download speed measures how fast your connection receives data from the internet (streaming, browsing). Upload speed measures how fast you send data to the internet (video calls, uploading files, live streaming). Most home connections have much higher download than upload speed."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(52,211,153,0.12);color:var(--green)">⚡ Networking</span>
+    <h1 class="article-h1">How to Test Your Internet Speed: What the Numbers Mean</h1>
+    <div class="article-meta"><span>📅 February 2025</span><span>⏱ 5 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">Download speed, upload speed, latency, jitter — your speed test results show several numbers. Here's exactly what each one means, what counts as a good result, and how to get the most accurate reading.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#metrics">The Four Key Metrics</a></li><li><a href="#download">Download Speed</a></li><li><a href="#upload">Upload Speed</a></li><li><a href="#latency">Latency (Ping)</a></li><li><a href="#good-speed">What Is a Good Speed?</a></li><li><a href="#tips">Tips for Accurate Results</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+
+    <h2 id="metrics">The Four Key Metrics</h2>
+    <p>Every internet speed test measures four things: <strong>download speed</strong>, <strong>upload speed</strong>, <strong>latency (ping)</strong>, and sometimes <strong>jitter</strong>. Each tells you something different about your connection quality.</p>
+
+    <h2 id="download">Download Speed (Mbps)</h2>
+    <p><strong>Download speed</strong> measures how fast your connection can receive data from the internet. It's measured in <strong>Megabits per second (Mbps)</strong>. This affects:</p>
+    <ul>
+      <li>How fast web pages load</li>
+      <li>Streaming video quality (Netflix, YouTube)</li>
+      <li>Speed of downloading files and software updates</li>
+    </ul>
+    <div class="info-box"><div class="info-box-title">💡 Mbps vs MB/s</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">Speed tests show <strong style="color:var(--text-1)">Mbps (Megabits per second)</strong>. Your file manager shows download progress in <strong style="color:var(--text-1)">MB/s (Megabytes per second)</strong>. To convert: divide Mbps by 8. So 100 Mbps = ~12.5 MB/s actual file download speed.</p></div>
+
+    <h2 id="upload">Upload Speed (Mbps)</h2>
+    <p><strong>Upload speed</strong> measures how fast your connection can send data to the internet. Home internet plans are typically <em>asymmetric</em> — download speed is much higher than upload. Upload speed affects:</p>
+    <ul>
+      <li>Video call quality (Zoom, Teams, Google Meet)</li>
+      <li>Live streaming (Twitch, YouTube Live)</li>
+      <li>Uploading files to cloud storage, sending large email attachments</li>
+      <li>Hosting a game server or website from home</li>
+    </ul>
+
+    <h2 id="latency">Latency / Ping (ms)</h2>
+    <p><strong>Latency</strong> (also called ping) is the time it takes for a data packet to travel from your device to a server and back, measured in <strong>milliseconds (ms)</strong>. Lower is better.</p>
+    <ul>
+      <li><strong>&lt; 20ms</strong> — Excellent. Ideal for competitive gaming and real-time applications</li>
+      <li><strong>20–50ms</strong> — Good. Suitable for all online gaming and video calls</li>
+      <li><strong>50–100ms</strong> — Average. Fine for browsing and streaming, noticeable in gaming</li>
+      <li><strong>100–200ms</strong> — Poor. May cause delays in video calls and gaming</li>
+      <li><strong>&gt; 200ms</strong> — Very high. Real-time applications will feel sluggish</li>
+    </ul>
+    <p><strong>Jitter</strong> is the variation in latency over time. High jitter (even with low average ping) causes choppy video calls and lag spikes in games.</p>
+
+    <h2 id="good-speed">What Is a Good Internet Speed?</h2>
+    <div style="overflow-x:auto;margin:1rem 0">
+      <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
+        <thead><tr style="background:var(--bg-card2)"><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Use Case</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Minimum Download</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Recommended</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Email & basic browsing</td><td style="padding:10px 14px;border:1px solid var(--border)">1 Mbps</td><td style="padding:10px 14px;border:1px solid var(--border)">5 Mbps</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">HD video streaming (1080p)</td><td style="padding:10px 14px;border:1px solid var(--border)">5 Mbps</td><td style="padding:10px 14px;border:1px solid var(--border)">15 Mbps</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">4K streaming</td><td style="padding:10px 14px;border:1px solid var(--border)">25 Mbps</td><td style="padding:10px 14px;border:1px solid var(--border)">50 Mbps</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Video calls (Zoom/Teams)</td><td style="padding:10px 14px;border:1px solid var(--border)">3 Mbps up/down</td><td style="padding:10px 14px;border:1px solid var(--border)">10 Mbps up/down</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Online gaming</td><td style="padding:10px 14px;border:1px solid var(--border)">3 Mbps + low ping</td><td style="padding:10px 14px;border:1px solid var(--border)">25 Mbps + &lt;50ms</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Household with 4+ devices</td><td style="padding:10px 14px;border:1px solid var(--border)">50 Mbps</td><td style="padding:10px 14px;border:1px solid var(--border)">200+ Mbps</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="tips">Tips for Accurate Speed Test Results</h2>
+    <ul>
+      <li><strong>Use a wired connection</strong> — Ethernet gives more accurate results than Wi-Fi</li>
+      <li><strong>Close other applications</strong> — Downloads, streaming, and updates consume bandwidth</li>
+      <li><strong>Test multiple times</strong> — Run 3–5 tests and average the results</li>
+      <li><strong>Test at different times</strong> — Network congestion varies by time of day (peak hours are typically evenings)</li>
+      <li><strong>Test close to your router</strong> — If testing on Wi-Fi, proximity matters</li>
+      <li><strong>Restart your router</strong> — Before testing, a router restart often improves speeds</li>
+    </ul>
+
+    <div class="tool-cta"><h3>⚡ Test Your Speed Right Now</h3><p>Run a free internet speed test — no installation required.</p><a href="../speed-test.html" class="btn btn-primary">Start Speed Test →</a></div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why is my actual speed lower than what I pay for? <span>+</span></div><div class="faq-a">ISPs advertise "up to" speeds that you rarely achieve consistently. Factors include network congestion during peak hours, Wi-Fi signal quality, router age, distance from the ISP's infrastructure, and overhead from protocols. A wired connection typically gets closer to advertised speeds.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Does a VPN affect my speed? <span>+</span></div><div class="faq-a">Yes. A VPN adds encryption overhead and routes traffic through an extra server, typically reducing speed by 10–30%. Modern VPN protocols like WireGuard minimize this impact. Test your speed with the VPN on and off to see its effect.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is a good ping for gaming? <span>+</span></div><div class="faq-a">Under 50ms is good for most online games. Under 20ms is excellent for competitive gaming. Above 100ms will cause noticeable lag, and above 150ms makes real-time competitive games very difficult to play well.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why does my speed vary between tests? <span>+</span></div><div class="faq-a">Network conditions change constantly. The test server load, internet congestion, your router's current state, and background processes all affect results. This is why averaging multiple tests gives a more reliable picture of your connection quality.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid">
+      <a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a>
+      <a href="what-is-dns.html" class="related-card"><div class="related-card-icon">🔍</div><div class="related-card-title">What Is DNS?</div></a>
+      <a href="vpn-and-ip-address.html" class="related-card"><div class="related-card-icon">🔒</div><div class="related-card-title">How VPNs Affect Your Speed</div></a>
+    </div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

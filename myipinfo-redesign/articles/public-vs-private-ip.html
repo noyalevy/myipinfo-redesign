@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public vs. Private IP Addresses: What's the Difference? — MyIPInfo.io</title>
+<meta name="description" content="Learn the difference between public and private IP addresses, how NAT works, and why your router has two different IP addresses at the same time.">
+<meta name="keywords" content="public vs private ip, private ip address, public ip address, NAT explained, 192.168 ip address">
+<link rel="canonical" href="https://myipinfo.io/articles/public-vs-private-ip.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a private IP address?","acceptedAnswer":{"@type":"Answer","text":"A private IP address is assigned to devices within a local network (home, office). These addresses are not routable on the internet. Common ranges are 192.168.x.x, 10.x.x.x, and 172.16.x.x to 172.31.x.x."}},{"@type":"Question","name":"What is a public IP address?","acceptedAnswer":{"@type":"Answer","text":"A public IP address is globally unique and assigned by your ISP to your router. It is visible to the entire internet and identifies your network to external servers and websites."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(99,102,241,0.15);color:var(--accent)">🏠 IP Addresses</span>
+    <h1 class="article-h1">Public vs. Private IP Addresses: What's the Difference?</h1>
+    <div class="article-meta"><span>📅 February 2025</span><span>⏱ 5 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">Your router has two IP addresses at the same time — a public one visible to the entire internet, and a private one used only inside your home network. Understanding the difference helps you troubleshoot connectivity issues, configure port forwarding, and protect your privacy.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#public">Public IP Address</a></li><li><a href="#private">Private IP Address</a></li><li><a href="#nat">How NAT Bridges the Two</a></li><li><a href="#ranges">Private IP Address Ranges</a></li><li><a href="#find">How to Find Both IPs</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="public">Public IP Address</h2>
+    <p>Your <strong>public IP address</strong> is assigned to your router by your Internet Service Provider (ISP). It is globally unique — no two devices on the internet share the same public IP at the same time. This is the address that:</p>
+    <ul>
+      <li>Websites and servers see when you connect to them</li>
+      <li>Your ISP uses to route traffic to your home</li>
+      <li>Shows up when you visit <a href="../index.html" style="color:var(--cyan)">MyIPInfo.io</a></li>
+    </ul>
+    <p>Your entire household — every phone, laptop, TV, and smart device — shares <strong>one single public IP address</strong>. Your router receives all incoming traffic and sorts it to the right device internally.</p>
+
+    <h2 id="private">Private IP Address</h2>
+    <p>Your <strong>private IP address</strong> is assigned by your router to each device on your local network. These addresses are <em>not visible on the internet</em> — they exist only within your home or office network. Common private IPs look like:</p>
+    <ul>
+      <li>Your laptop: <code>192.168.1.105</code></li>
+      <li>Your phone: <code>192.168.1.112</code></li>
+      <li>Your smart TV: <code>192.168.1.120</code></li>
+      <li>Your router itself: <code>192.168.1.1</code> (the gateway)</li>
+    </ul>
+    <div class="info-box"><div class="info-box-title">💡 Same Private IPs Everywhere</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">Millions of homes all use <code style="color:var(--cyan)">192.168.1.x</code> addresses — and that's fine! Private IPs are <strong style="color:var(--text-1)">reused globally</strong> because they never appear on the internet. They're only meaningful within each individual local network.</p></div>
+
+    <h2 id="nat">How NAT Bridges the Two</h2>
+    <p><strong>NAT (Network Address Translation)</strong> is the technology that lets your router use one public IP to serve many private devices. Here's how it works:</p>
+    <ol>
+      <li>Your laptop (private IP <code>192.168.1.105</code>) requests a webpage</li>
+      <li>Your router receives the request and replaces the source address with your <strong>public IP</strong></li>
+      <li>The request goes to the website's server using your public IP</li>
+      <li>The server responds to your public IP</li>
+      <li>Your router remembers which device made the request and forwards the response to <code>192.168.1.105</code></li>
+    </ol>
+    <p>NAT is why multiple devices can share one public IP — and also why unsolicited incoming connections from the internet can't directly reach devices inside your network (acting as a basic firewall).</p>
+
+    <h2 id="ranges">Private IP Address Ranges</h2>
+    <p>RFC 1918 defines three reserved ranges for private use that are never routed on the public internet:</p>
+    <div style="overflow-x:auto;margin:1rem 0">
+      <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
+        <thead><tr style="background:var(--bg-card2)"><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Range</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Addresses</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Common Use</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">10.0.0.0/8</td><td style="padding:10px 14px;border:1px solid var(--border)">16.7 million</td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Large enterprises, cloud VPCs</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">172.16.0.0/12</td><td style="padding:10px 14px;border:1px solid var(--border)">1 million</td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Medium networks, Docker</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border);font-family:var(--font-mono)">192.168.0.0/16</td><td style="padding:10px 14px;border:1px solid var(--border)">65,536</td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Home routers (most common)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="find">How to Find Both IP Addresses</h2>
+    <h3>Find Your Public IP</h3>
+    <p>Visit <a href="../index.html" style="color:var(--cyan)">MyIPInfo.io</a> — your public IP is displayed instantly at the top of the page.</p>
+    <h3>Find Your Private IP</h3>
+    <ul>
+      <li><strong>Windows:</strong> Open Command Prompt → type <code>ipconfig</code> → look for "IPv4 Address"</li>
+      <li><strong>Mac:</strong> System Settings → Network → select your connection → IP address shown</li>
+      <li><strong>Linux:</strong> Run <code>ip addr show</code> or <code>hostname -I</code></li>
+      <li><strong>iPhone:</strong> Settings → Wi-Fi → tap your network → IP Address</li>
+      <li><strong>Android:</strong> Settings → Network → Wi-Fi → tap your network → Advanced</li>
+    </ul>
+
+    <div class="tool-cta"><h3>🌐 Check Your Public IP Now</h3><p>See your public IP, location, ISP, and complete network details — instantly.</p><a href="../index.html" class="btn btn-primary">View My Public IP →</a></div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can someone on the internet connect to my private IP? <span>+</span></div><div class="faq-a">No. Private IP addresses are not routable on the internet — external parties can only see your public IP. To allow incoming connections to a specific device (e.g., a game server), you need to set up port forwarding on your router, which maps a public port to a private IP and port.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why does my public IP change? <span>+</span></div><div class="faq-a">Most ISPs assign dynamic public IPs that can change when you restart your router or after a lease period. Businesses that need a consistent address pay for static IPs. If you need a stable public IP for hosting, ask your ISP or use a Dynamic DNS (DDNS) service.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is 127.0.0.1 (localhost)? <span>+</span></div><div class="faq-a">127.0.0.1 is the loopback address — it always refers to your own device. When a developer runs a web server locally and visits "localhost" in their browser, the traffic never leaves the computer. It's not a private IP in the RFC 1918 sense, but a special reserved address.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Does a VPN change my private IP? <span>+</span></div><div class="faq-a">No. A VPN changes your public IP (replacing it with the VPN server's IP). Your private IP assigned by your router stays the same. The VPN creates an additional virtual network interface with its own address, but your local network private IP is unaffected.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid">
+      <a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a>
+      <a href="dynamic-vs-static-ip.html" class="related-card"><div class="related-card-icon">⚙️</div><div class="related-card-title">Dynamic vs. Static IP Address</div></a>
+      <a href="vpn-and-ip-address.html" class="related-card"><div class="related-card-icon">🔒</div><div class="related-card-title">How VPNs Hide Your IP</div></a>
+    </div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

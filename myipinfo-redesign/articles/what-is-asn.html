@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is an ASN? Autonomous System Numbers Explained — MyIPInfo.io</title>
+<meta name="description" content="Every ISP and major network gets an Autonomous System Number (ASN). Learn what ASNs are, how BGP routing uses them, and how to look one up.">
+<meta name="keywords" content="what is asn, autonomous system number, bgp routing, asn lookup, internet routing explained, as number">
+<link rel="canonical" href="https://myipinfo.io/articles/what-is-asn.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an ASN?","acceptedAnswer":{"@type":"Answer","text":"An ASN (Autonomous System Number) is a unique identifier assigned to a network or group of networks under a single administrative control (like an ISP, university, or company). ASNs are used in BGP routing to exchange routing information between networks on the internet."}},{"@type":"Question","name":"How do I find my ASN?","acceptedAnswer":{"@type":"Answer","text":"You can find your ASN by visiting MyIPInfo.io — it displays your IP address's ASN, ASN name, and associated organization. Your ASN is typically your ISP's autonomous system number."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(167,139,250,0.15);color:#a78bfa">🏢 Networking</span>
+    <h1 class="article-h1">What Is an ASN? Autonomous System Numbers Explained</h1>
+    <div class="article-meta"><span>📅 December 2024</span><span>⏱ 5 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">Behind every IP address is an ASN — the unique identifier of the network that owns it. ASNs are how the internet routes traffic between thousands of independent networks. Here's what they are and why they matter.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#what-is">What Is an ASN?</a></li><li><a href="#bgp">ASNs and BGP Routing</a></li><li><a href="#who-has">Who Gets an ASN?</a></li><li><a href="#format">ASN Format</a></li><li><a href="#lookup">How to Look Up an ASN</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="what-is">What Is an ASN?</h2>
+    <p>An <strong>Autonomous System Number (ASN)</strong> is a unique numeric identifier assigned to a collection of IP networks and routers under the control of a single organization — such as an ISP, university, corporation, or government agency — that presents a unified routing policy to the internet.</p>
+    <p>Think of the internet as a network of networks. Each "network" is an <strong>Autonomous System (AS)</strong> — an independently operated collection of IP prefixes with its own routing policy. ASNs are how these systems identify themselves to each other.</p>
+    <div class="info-box"><div class="info-box-title">💡 Real-World Examples</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">Google: <code style="color:var(--cyan)">AS15169</code> · Cloudflare: <code style="color:var(--cyan)">AS13335</code> · Amazon AWS: <code style="color:var(--cyan)">AS16509</code> · Comcast: <code style="color:var(--cyan)">AS7922</code></p></div>
+
+    <h2 id="bgp">ASNs and BGP Routing</h2>
+    <p><strong>BGP (Border Gateway Protocol)</strong> is the routing protocol that glues the internet together. It uses ASNs to exchange routing information between autonomous systems. Here's how it works:</p>
+    <ol>
+      <li>Each AS announces which IP prefixes (ranges) it owns to its neighbors via BGP</li>
+      <li>Routers build a map of reachable IP prefixes and the ASN paths to get there</li>
+      <li>When a packet needs to travel from your ISP to Google, BGP determines the optimal path through the internet's AS topology</li>
+      <li>The packet hops from AS to AS until it reaches AS15169 (Google) and the destination server</li>
+    </ol>
+    <p>BGP runs between edge routers of different ASes — the "border" routers that connect one network to another. There are roughly <strong>120,000+ active ASNs</strong> on the internet today.</p>
+
+    <h2 id="who-has">Who Gets an ASN?</h2>
+    <p>ASNs are assigned by <strong>Regional Internet Registries (RIRs)</strong>:</p>
+    <ul>
+      <li><strong>ARIN</strong> — North America</li>
+      <li><strong>RIPE NCC</strong> — Europe, Middle East, Central Asia</li>
+      <li><strong>APNIC</strong> — Asia-Pacific</li>
+      <li><strong>LACNIC</strong> — Latin America and the Caribbean</li>
+      <li><strong>AFRINIC</strong> — Africa</li>
+    </ul>
+    <p>Typically, organizations that need an ASN include: ISPs, large enterprises with multiple upstream providers, cloud providers, universities, CDN companies, and anyone who needs to announce their own IP space to the internet.</p>
+
+    <h2 id="format">ASN Format</h2>
+    <p>ASNs come in two formats:</p>
+    <ul>
+      <li><strong>16-bit ASNs</strong> (original): 1–65535. Range <strong>64512–65534</strong> is reserved for private use.</li>
+      <li><strong>32-bit ASNs</strong> (extended, RFC 4893): Up to 4,294,967,295. Written as <code>AS131072</code> or in dot notation as <code>2.0</code>.</li>
+    </ul>
+    <p>You'll typically see ASNs written as <code>AS15169</code> or just <code>15169</code>.</p>
+
+    <h2 id="lookup">How to Look Up an ASN</h2>
+    <p>Visit <a href="../index.html" style="color:var(--cyan)">MyIPInfo.io</a> — it shows your IP address's ASN, ASN name, and organization in the "ASN Information" section. You can also look up the ASN for any IP address using the IP lookup tool.</p>
+    <p>For developers, you can query ASN data via:</p>
+    <pre><code># Using whois
+whois -h whois.radb.net AS15169
+
+# Using dig for IP → ASN
+dig -x 8.8.8.8 +short</code></pre>
+
+    <div class="tool-cta"><h3>🏢 Check Your ASN Details</h3><p>See your IP's ASN, organization, and infrastructure provider — instantly.</p><a href="../index.html" class="btn btn-primary">Look Up My ASN →</a></div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What does my ASN tell someone about me? <span>+</span></div><div class="faq-a">Your ASN identifies your ISP or network provider — not you personally. Someone seeing your ASN knows which company provides your internet service. This is public information registered with regional internet registries.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why do VPNs have their own ASNs? <span>+</span></div><div class="faq-a">Large VPN providers operate their own networks and own IP blocks, so they have ASNs like any other network operator. This means IP reputation databases can often detect known VPN ASNs. Some websites block traffic from known VPN ASNs.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is the difference between ASN and IP address? <span>+</span></div><div class="faq-a">An IP address identifies a specific device or interface. An ASN identifies the entire network that owns a range of IP addresses. One ASN can be associated with millions of IP addresses (e.g., Amazon AWS has billions of IPs under AS16509).</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid">
+      <a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a>
+      <a href="what-is-dns.html" class="related-card"><div class="related-card-icon">🔍</div><div class="related-card-title">What Is DNS?</div></a>
+      <a href="ip-geolocation.html" class="related-card"><div class="related-card-icon">📍</div><div class="related-card-title">IP Geolocation Explained</div></a>
+    </div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

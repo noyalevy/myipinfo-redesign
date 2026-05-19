@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP Geolocation: How Websites Know Where You Are — MyIPInfo.io</title>
+<meta name="description" content="Learn how IP geolocation works, how accurate it is, how websites use it, and how you can protect your location privacy online.">
+<meta name="keywords" content="ip geolocation, how websites know your location, ip location accuracy, ip address location, geolocation explained">
+<link rel="canonical" href="https://myipinfo.io/articles/ip-geolocation.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is IP geolocation?","acceptedAnswer":{"@type":"Answer","text":"IP geolocation is typically accurate to the country level (99%+), region level (80–90%), and city level (50–75%). It cannot pinpoint your exact street address. Accuracy varies by ISP, country, and whether you're using a VPN or proxy."}},{"@type":"Question","name":"How do websites know my location from my IP?","acceptedAnswer":{"@type":"Answer","text":"Websites use IP geolocation databases that map IP address ranges to geographic locations. These databases are compiled from ISP data, network registries (ARIN, RIPE), and user-contributed corrections. Major providers include MaxMind, ip-api, and ipapi."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(248,113,113,0.12);color:var(--red)">📍 IP Addresses</span>
+    <h1 class="article-h1">IP Geolocation: How Websites Know Where You Are</h1>
+    <div class="article-meta"><span>📅 January 2025</span><span>⏱ 6 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">When you visit a website, it often already knows your country, city, and language — before you tell it anything. This is IP geolocation at work. Here's exactly how it works, how accurate it is, and what you can do about it.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#how-works">How IP Geolocation Works</a></li><li><a href="#accuracy">How Accurate Is It?</a></li><li><a href="#use-cases">How Websites Use Your Location</a></li><li><a href="#what-it-cannot">What IP Geolocation Cannot Reveal</a></li><li><a href="#protect">How to Protect Your Location Privacy</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="how-works">How IP Geolocation Works</h2>
+    <p>IP geolocation works by looking up your IP address in a <strong>geolocation database</strong> — a massive, continuously updated mapping of IP address ranges to geographic locations.</p>
+    <p>These databases are built from multiple sources:</p>
+    <ul>
+      <li><strong>Regional Internet Registries (RIRs)</strong> — Organizations like ARIN (Americas), RIPE (Europe), and APNIC (Asia-Pacific) publish which IP blocks are allocated to which countries and ISPs</li>
+      <li><strong>ISP data</strong> — Some ISPs share where they deploy their IP addresses</li>
+      <li><strong>Active measurements</strong> — Network latency measurements help triangulate approximate locations</li>
+      <li><strong>User corrections</strong> — Some providers allow users to submit corrections when their IP location is wrong</li>
+    </ul>
+    <p>Major geolocation database providers include MaxMind (GeoIP2), ip-api.com, and ipapi.co. Websites query these databases in real-time using your IP address.</p>
+
+    <h2 id="accuracy">How Accurate Is IP Geolocation?</h2>
+    <div style="overflow-x:auto;margin:1rem 0">
+      <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
+        <thead><tr style="background:var(--bg-card2)"><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Level</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Typical Accuracy</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Notes</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Country</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-green">99%+</span></td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Highly reliable</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Region / State</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-green">80–90%</span></td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Good for most ISPs</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">City</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-yellow">50–75%</span></td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Often within 50 km</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Postal code</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-yellow">40–60%</span></td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Variable quality</td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Street address</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-red">Not possible</span></td><td style="padding:10px 14px;border:1px solid var(--border);color:var(--text-2)">Requires legal process</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warning-box"><div class="warning-box-title">⚠️ Common Misconception</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">Your IP address cannot reveal your <strong style="color:var(--text-1)">home address or street location</strong>. Anyone who claims to have pinpointed your exact house from an IP address is either lying or has obtained data through other means (such as a legal subpoena to your ISP).</p></div>
+
+    <h2 id="use-cases">How Websites Use Your Location</h2>
+    <ul>
+      <li><strong>Content localization</strong> — Auto-detecting your language and currency</li>
+      <li><strong>Geo-restrictions</strong> — Blocking content not licensed in your region (Netflix, Spotify)</li>
+      <li><strong>Fraud detection</strong> — Flagging logins from unexpected countries</li>
+      <li><strong>Targeted advertising</strong> — Showing local ads and deals</li>
+      <li><strong>Compliance</strong> — GDPR cookie banners for EU users, age verification</li>
+      <li><strong>CDN routing</strong> — Serving content from the nearest server for speed</li>
+      <li><strong>Tax calculation</strong> — Applying the correct VAT or sales tax rate</li>
+    </ul>
+
+    <h2 id="what-it-cannot">What IP Geolocation Cannot Reveal</h2>
+    <p>Despite what some claim online, an IP address alone <strong>cannot</strong> reveal:</p>
+    <ul>
+      <li>Your exact home or work address</li>
+      <li>Your name or identity</li>
+      <li>Your browsing history or activity</li>
+      <li>Personal information about you</li>
+    </ul>
+    <p>This information is only accessible to your ISP and law enforcement with proper legal authorization (subpoena or court order).</p>
+
+    <h2 id="protect">How to Protect Your Location Privacy</h2>
+    <ul>
+      <li><strong>VPN</strong> — Routes traffic through a server in another location, replacing your IP with the VPN server's IP and location</li>
+      <li><strong>Tor Browser</strong> — Routes through multiple relays, each seeing only the previous hop's IP</li>
+      <li><strong>Proxy server</strong> — Similar to VPN but typically without encryption</li>
+    </ul>
+    <p>After connecting to a VPN, visit <a href="../index.html" style="color:var(--cyan)">MyIPInfo.io</a> to verify your location now shows the VPN server's location instead of yours.</p>
+
+    <div class="tool-cta"><h3>📍 Check Your IP Location Now</h3><p>See exactly what your IP reveals about your location — country, city, ISP, coordinates, and more.</p><a href="../index.html" class="btn btn-primary">View My Location →</a></div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why does my IP show the wrong city? <span>+</span></div><div class="faq-a">IP geolocation databases aren't perfect. Your IP might be registered to your ISP's headquarters city rather than where you physically are. ISPs own large blocks of IPs and don't always update databases when reassigning addresses. Errors of 50–200 km are common at the city level.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can a website see my GPS location from my IP? <span>+</span></div><div class="faq-a">No. IP geolocation is an approximation based on database lookups — it does not access your GPS. If a website asks for your precise location, it uses the browser's Geolocation API, which requires your explicit permission and accesses your device's GPS, Wi-Fi triangulation, or cell tower data.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I request correction of my IP geolocation data? <span>+</span></div><div class="faq-a">Yes. Major geolocation providers like MaxMind offer correction forms. However, the underlying issue is usually how your ISP has registered its IP blocks with regional registries — which is harder to change. A VPN is a more reliable solution for appearing in a different location.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid">
+      <a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a>
+      <a href="vpn-and-ip-address.html" class="related-card"><div class="related-card-icon">🔒</div><div class="related-card-title">How VPNs Hide Your IP</div></a>
+      <a href="what-is-asn.html" class="related-card"><div class="related-card-icon">🏢</div><div class="related-card-title">What Is an ASN?</div></a>
+    </div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

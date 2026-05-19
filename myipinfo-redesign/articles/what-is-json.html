@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is JSON? A Beginner's Guide to the Universal Data Format — MyIPInfo.io</title>
+<meta name="description" content="JSON (JavaScript Object Notation) is the most popular format for exchanging data on the web. Learn how to read, write, and validate JSON with examples.">
+<meta name="keywords" content="what is json, json explained, json format, json vs xml, how to read json, json beginner guide, json api">
+<link rel="canonical" href="https://myipinfo.io/articles/what-is-json.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is JSON?","acceptedAnswer":{"@type":"Answer","text":"JSON (JavaScript Object Notation) is a lightweight, text-based data interchange format. It is easy for humans to read and write, and easy for machines to parse. It is the most commonly used format for web APIs and data exchange between applications."}},{"@type":"Question","name":"What is JSON used for?","acceptedAnswer":{"@type":"Answer","text":"JSON is used everywhere: web APIs return data in JSON, configuration files use JSON, databases like MongoDB store JSON documents, browsers use JSON for localStorage, and applications exchange data with servers in JSON format."}}]}</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(52,211,153,0.12);color:var(--green)">{ } Developer Tools</span>
+    <h1 class="article-h1">What Is JSON? A Beginner's Guide to the Universal Data Format</h1>
+    <div class="article-meta"><span>📅 November 2024</span><span>⏱ 5 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">JSON is the language of the modern web. Nearly every API, configuration file, and data exchange uses it. If you've ever seen curly braces with key-value pairs, you've seen JSON. Here's everything you need to understand it.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#what-is">What Is JSON?</a></li><li><a href="#syntax">JSON Syntax</a></li><li><a href="#data-types">JSON Data Types</a></li><li><a href="#examples">Real-World Examples</a></li><li><a href="#vs-xml">JSON vs. XML</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="what-is">What Is JSON?</h2>
+    <p><strong>JSON</strong> (JavaScript Object Notation) is a lightweight, text-based format for storing and exchanging structured data. Despite its name, JSON is language-independent — it's used in Python, Java, Go, PHP, Ruby, and virtually every other programming language.</p>
+    <p>JSON was created by Douglas Crockford in the early 2000s as a simpler alternative to XML. Today it is the <strong>dominant data format for web APIs</strong> — when you use a weather app, a maps service, or check your IP on MyIPInfo.io, JSON is almost certainly involved in the data exchange.</p>
+
+    <h2 id="syntax">JSON Syntax</h2>
+    <p>JSON has two fundamental structures:</p>
+    <ul>
+      <li><strong>Object</strong> — A collection of key-value pairs wrapped in curly braces <code>{}</code></li>
+      <li><strong>Array</strong> — An ordered list of values wrapped in square brackets <code>[]</code></li>
+    </ul>
+    <p>Here's a simple JSON object:</p>
+    <pre><code>{
+  "ip": "199.203.79.17",
+  "city": "Tel Aviv",
+  "country": "Israel",
+  "isp": "Cellcom",
+  "latitude": 32.0853,
+  "longitude": 34.7818,
+  "vpn": false
+}</code></pre>
+    <p>Rules to remember:</p>
+    <ul>
+      <li>Keys must be <strong>strings in double quotes</strong></li>
+      <li>Key-value pairs are separated by <strong>colons</strong> <code>:</code></li>
+      <li>Pairs are separated by <strong>commas</strong> <code>,</code></li>
+      <li><strong>No trailing comma</strong> after the last item (common mistake!)</li>
+      <li>JSON has <strong>no comments</strong></li>
+    </ul>
+    <div class="warning-box"><div class="warning-box-title">⚠️ Most Common JSON Mistake</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">A trailing comma after the last item is <strong style="color:var(--red)">invalid JSON</strong> and will cause parse errors: <code style="color:var(--red)">{"name": "John",}</code>. Always validate your JSON before using it.</p></div>
+
+    <h2 id="data-types">JSON Data Types</h2>
+    <p>JSON supports exactly six data types:</p>
+    <pre><code>{
+  "string_example":  "Hello, World!",
+  "number_example":  42,
+  "float_example":   3.14,
+  "boolean_example": true,
+  "null_example":    null,
+  "array_example":   [1, "two", false, null],
+  "object_example":  { "nested": "object" }
+}</code></pre>
+
+    <h2 id="examples">Real-World Examples</h2>
+    <h3>IP Address API Response (like MyIPInfo.io)</h3>
+    <pre><code>{
+  "ip": "199.203.79.17",
+  "version": "IPv4",
+  "city": "Rishon LeTsiyyon",
+  "region": "Central District",
+  "country_name": "Israel",
+  "country_code": "IL",
+  "latitude": 31.9642,
+  "longitude": 34.7876,
+  "timezone": "Asia/Jerusalem",
+  "org": "AS1680 Cellcom Fixed Line Communication L.P",
+  "asn": "AS1680"
+}</code></pre>
+    <h3>Array of Objects</h3>
+    <pre><code>[
+  { "tool": "IP Lookup",   "url": "/",              "free": true },
+  { "tool": "User Agent",  "url": "/user-agent",    "free": true },
+  { "tool": "Speed Test",  "url": "/speed-test",    "free": true },
+  { "tool": "JSON Export", "url": "/json-export",   "free": true },
+  { "tool": "Hash Gen",    "url": "/hash-generator","free": true }
+]</code></pre>
+
+    <h2 id="vs-xml">JSON vs. XML</h2>
+    <div style="overflow-x:auto;margin:1rem 0">
+      <table style="width:100%;border-collapse:collapse;font-size:0.875rem">
+        <thead><tr style="background:var(--bg-card2)"><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">Feature</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">JSON</th><th style="padding:10px 14px;text-align:left;border:1px solid var(--border);color:var(--text-2)">XML</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Readability</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-green">High</span></td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-yellow">Medium</span></td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">File size</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-green">Compact</span></td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-yellow">Verbose</span></td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Comments</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-red">Not supported</span></td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-green">Supported</span></td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Web API usage</td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-green">Dominant</span></td><td style="padding:10px 14px;border:1px solid var(--border)"><span class="badge badge-yellow">Legacy</span></td></tr>
+          <tr><td style="padding:10px 14px;border:1px solid var(--border)">Schema validation</td><td style="padding:10px 14px;border:1px solid var(--border)">JSON Schema</td><td style="padding:10px 14px;border:1px solid var(--border)">XSD (powerful)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tool-cta"><h3>{ } Export Your IP Data as JSON</h3><p>Download your complete IP address, network, and browser data as a structured JSON file — free, instant, no signup.</p><a href="../json-export.html" class="btn btn-primary">Export My IP as JSON →</a></div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Is JSON the same as JavaScript? <span>+</span></div><div class="faq-a">No. JSON was inspired by JavaScript object syntax, but it's a language-independent text format. JSON has stricter rules than JavaScript objects — for example, keys must be quoted strings. You can use JSON with Python, Java, Go, PHP, or any language.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">How do I validate JSON? <span>+</span></div><div class="faq-a">You can validate JSON by pasting it into our JSON Export tool, or use online validators like JSONLint.com. In code: try parsing it — if it throws a parse error, the JSON is invalid. Common errors: missing quotes on keys, trailing commas, and unescaped special characters.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is "pretty printed" JSON? <span>+</span></div><div class="faq-a">Pretty printed JSON is formatted with indentation and newlines to be human-readable. Minified JSON removes all whitespace to reduce file size. APIs often return minified JSON; tools like our JSON Export page display it pretty-printed for easy reading.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can JSON contain comments? <span>+</span></div><div class="faq-a">No — standard JSON does not support comments. This is intentional, as JSON is a data format, not a configuration language. If you need comments in config files, consider JSONC (JSON with Comments, used by VS Code), YAML, or TOML instead.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid">
+      <a href="what-is-hash-function.html" class="related-card"><div class="related-card-icon">🔐</div><div class="related-card-title">What Is a Hash Function?</div></a>
+      <a href="what-is-user-agent.html" class="related-card"><div class="related-card-icon">🖥️</div><div class="related-card-title">What Is a User Agent?</div></a>
+      <a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a>
+    </div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is a User Agent? How Browsers Identify Themselves — MyIPInfo.io</title>
+<meta name="description" content="A user agent is a string your browser sends to every website identifying your browser, OS, and device. Learn how to read it, why it matters, and how to check yours.">
+<meta name="keywords" content="what is user agent, user agent string, browser user agent, user agent explained, check my user agent">
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="article-base.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a><ul class="nav-links"><li><a href="../index.html">My IP</a></li><li><a href="../user-agent.html">User Agent</a></li><li><a href="../speed-test.html">Speed Test</a></li><li><a href="../json-export.html">JSON Export</a></li><li><a href="../hash-generator.html">Hash Generator</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button><div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div></div></nav>
+<div class="article-wrap">
+  <div class="article-header">
+    <span class="article-tag" style="background:rgba(52,211,153,0.12);color:var(--green)">🖥️ Developer Tools</span>
+    <h1 class="article-h1">What Is a User Agent? How Browsers Identify Themselves</h1>
+    <div class="article-meta"><span>📅 March 2025</span><span>⏱ 5 min read</span><span>✍️ MyIPInfo Team</span></div>
+  </div>
+  <p class="article-lead">Every time your browser loads a webpage, it sends a "user agent" string to the server. This string identifies your browser, operating system, and device type. Here's what it means and why developers and security researchers care about it.</p>
+  <div class="toc"><div class="toc-title">📋 Table of Contents</div><ol><li><a href="#what-is">What Is a User Agent?</a></li><li><a href="#anatomy">Anatomy of a User Agent String</a></li><li><a href="#why-it-matters">Why User Agents Matter</a></li><li><a href="#check">How to Check Your User Agent</a></li><li><a href="#spoofing">User Agent Spoofing</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+  <div class="article-body">
+    <h2 id="what-is">What Is a User Agent?</h2>
+    <p>A <strong>user agent</strong> is a string of text that your browser automatically includes in every HTTP request it makes. It tells the web server what software is making the request — specifically your browser name and version, operating system, and sometimes device type.</p>
+    <p>Servers use this information to serve appropriate content. For example, a website might serve a mobile-optimized layout to an iPhone and a desktop layout to a Windows PC — all based on the user agent.</p>
+
+    <h2 id="anatomy">Anatomy of a User Agent String</h2>
+    <p>Here's a real user agent from Google Chrome on Windows 11:</p>
+    <pre><code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36</code></pre>
+    <p>Let's break it down:</p>
+    <ul>
+      <li><code>Mozilla/5.0</code> — A legacy compatibility token. Almost all browsers include this.</li>
+      <li><code>(Windows NT 10.0; Win64; x64)</code> — The operating system: Windows 10/11, 64-bit</li>
+      <li><code>AppleWebKit/537.36</code> — The rendering engine (Blink, which is based on WebKit)</li>
+      <li><code>(KHTML, like Gecko)</code> — More legacy compatibility tokens</li>
+      <li><code>Chrome/124.0.0.0</code> — The actual browser and version</li>
+      <li><code>Safari/537.36</code> — Another compatibility token (Chrome impersonates Safari)</li>
+    </ul>
+    <div class="info-box"><div class="info-box-title">💡 Why "Mozilla/5.0" Everywhere?</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">This is a historical quirk. Early web servers served better content to Netscape Navigator (which identified as "Mozilla"). So every browser started including it for compatibility — a tradition that persists 30 years later.</p></div>
+
+    <h2 id="why-it-matters">Why User Agents Matter</h2>
+    <h3>For Developers</h3>
+    <ul>
+      <li><strong>Responsive design testing</strong> — Emulate mobile devices in DevTools</li>
+      <li><strong>Analytics</strong> — Understand what browsers and devices your users have</li>
+      <li><strong>Feature detection</strong> — Serve polyfills only to browsers that need them</li>
+      <li><strong>Bot detection</strong> — Web scrapers often use headless browser user agents</li>
+    </ul>
+    <h3>For Security</h3>
+    <ul>
+      <li><strong>Fingerprinting</strong> — Your UA combined with other signals can uniquely identify your browser</li>
+      <li><strong>Attack surface</strong> — Some vulnerabilities target specific browser versions</li>
+      <li><strong>Fraud detection</strong> — Mismatched UAs can indicate bot traffic or fraud</li>
+    </ul>
+
+    <h2 id="check">How to Check Your User Agent</h2>
+    <p>Visit our <a href="../user-agent.html" style="color:var(--cyan)">User Agent Checker</a> tool — it instantly shows your full UA string plus parsed details: browser name, version, operating system, rendering engine, screen size, and browser capabilities like cookies and JavaScript support.</p>
+    <div class="tool-cta"><h3>🖥️ Check Your User Agent</h3><p>See your full user agent string and all parsed browser details.</p><a href="../user-agent.html" class="btn btn-primary">Check My User Agent →</a></div>
+
+    <h2 id="spoofing">User Agent Spoofing</h2>
+    <p>You can change (spoof) your user agent to make websites think you're using a different browser or device. Common reasons:</p>
+    <ul>
+      <li>Testing how your website looks on different devices</li>
+      <li>Accessing sites that block certain browsers</li>
+      <li>Scraping websites that check for browser UAs</li>
+      <li>Privacy — reducing your browser fingerprint</li>
+    </ul>
+    <p>In Chrome DevTools: press <kbd>F12</kbd> → Network conditions → Uncheck "Use browser default" under User agent → select or type a custom UA.</p>
+    <div class="warning-box"><div class="warning-box-title">⚠️ Note on Privacy</div><p style="margin:0;color:var(--text-2);font-size:0.9rem">Changing your user agent alone doesn't make you anonymous. Websites use dozens of other signals (canvas fingerprinting, fonts, screen resolution, etc.) to identify browsers. The <strong style="color:var(--text-1)">Privacy Sandbox</strong> initiative and User-Agent Client Hints are gradually replacing the full UA string with more privacy-preserving alternatives.</p></div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is a user agent string? <span>+</span></div><div class="faq-a">A user agent string is a text identifier that your browser sends with every web request. It tells the server what browser, operating system, and device you're using so the server can send appropriate content.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can websites track me using my user agent? <span>+</span></div><div class="faq-a">Your user agent is one of many signals used for browser fingerprinting. Combined with your screen resolution, installed fonts, timezone, and other factors, it can create a fairly unique profile — even without cookies.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why does every browser say "Mozilla" in its user agent? <span>+</span></div><div class="faq-a">It's a historical compatibility quirk from the early web browser wars. Early servers gave richer content to Netscape Navigator (Mozilla), so all browsers began including "Mozilla" to get the same treatment. It stuck as a standard prefix.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">How do I change my user agent? <span>+</span></div><div class="faq-a">In Chrome/Edge: Open DevTools (F12) → Three-dot menu → More tools → Network conditions → Uncheck "Use browser default" and set a custom user agent. Browser extensions like "User-Agent Switcher" also work.</div></div>
+    </div>
+    <div class="related-articles"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0">Related Articles</h2><div class="related-grid"><a href="what-is-my-ip-address.html" class="related-card"><div class="related-card-icon">🌐</div><div class="related-card-title">What Is My IP Address?</div></a><a href="what-is-hash-function.html" class="related-card"><div class="related-card-icon">🔐</div><div class="related-card-title">What Is a Hash Function?</div></a><a href="vpn-and-ip-address.html" class="related-card"><div class="related-card-icon">🔒</div><div class="related-card-title">How VPNs Hide Your IP</div></a></div></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="footer-logo"><img src="../logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="../index.html">My IP</a></li>
+        <li><a href="../user-agent.html">User Agent</a></li>
+        <li><a href="../speed-test.html">Speed Test</a></li>
+        <li><a href="../json-export.html">JSON Export</a></li>
+        <li><a href="../hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<script>function toggleFAQ(el){const i=el.parentElement;i.classList.toggle('open');el.querySelector('span').textContent=i.classList.contains('open')?'−':'+'}</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

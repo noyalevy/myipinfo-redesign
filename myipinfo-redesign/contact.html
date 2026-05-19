@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — MyIPInfo.io</title>
+<meta name="description" content="Get in touch with the MyIPInfo.io team. Report issues, ask questions, or send feedback.">
+<link rel="canonical" href="https://myipinfo.io/contact.html">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">My IP</a></li>
+      <li><a href="user-agent.html">User Agent</a></li>
+      <li><a href="speed-test.html">Speed Test</a></li>
+      <li><a href="json-export.html">JSON Export</a></li>
+      <li><a href="hash-generator.html">Hash Generator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+    <div class="nav-right"><div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div><a href="#" class="login-btn">Log In</a></div>
+  </div>
+</nav>
+
+<div class="page" style="max-width:760px">
+
+  <div style="text-align:center;margin-bottom:2.5rem">
+    <div style="font-size:2.5rem;margin-bottom:0.75rem">✉️</div>
+    <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem">Contact Us</h1>
+    <p style="color:var(--text-2);font-size:1rem">Have a question, found a bug, or want to give feedback? We'd love to hear from you.</p>
+  </div>
+
+  <div class="tool-card" style="margin-bottom:1.5rem">
+    <form id="contactForm" onsubmit="submitForm(event)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div>
+          <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em">Name</label>
+          <input id="cName" type="text" placeholder="Your name" required style="width:100%;padding:10px 14px;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-1);font-family:var(--font-ui);font-size:0.9rem;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em">Email</label>
+          <input id="cEmail" type="email" placeholder="your@email.com" required style="width:100%;padding:10px 14px;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-1);font-family:var(--font-ui);font-size:0.9rem;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+      </div>
+      <div style="margin-bottom:1rem">
+        <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em">Subject</label>
+        <select id="cSubject" style="width:100%;padding:10px 14px;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-1);font-family:var(--font-ui);font-size:0.9rem;outline:none;cursor:pointer">
+          <option value="general">General Question</option>
+          <option value="bug">Bug Report</option>
+          <option value="feedback">Feedback / Feature Request</option>
+          <option value="privacy">Privacy / Data Request</option>
+          <option value="business">Business Inquiry</option>
+        </select>
+      </div>
+      <div style="margin-bottom:1.5rem">
+        <label style="display:block;font-size:0.8rem;font-weight:600;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em">Message</label>
+        <textarea id="cMessage" rows="6" placeholder="Describe your question or issue..." required style="width:100%;padding:10px 14px;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-1);font-family:var(--font-ui);font-size:0.9rem;outline:none;resize:vertical;transition:border-color 0.2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:13px;font-size:0.9rem">Send Message →</button>
+    </form>
+    <div id="formSuccess" style="display:none;text-align:center;padding:2rem 1rem">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem">✅</div>
+      <h3 style="font-weight:700;margin-bottom:0.5rem">Message Sent!</h3>
+      <p style="color:var(--text-2)">Thanks for reaching out. We'll get back to you within 1–2 business days.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
+    <div class="tool-card" style="text-align:center;padding:1.5rem 1rem">
+      <div style="font-size:1.75rem;margin-bottom:0.5rem">🐛</div>
+      <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.25rem">Bug Report</div>
+      <div style="color:var(--text-3);font-size:0.8rem">Found something broken? Tell us exactly what happened.</div>
+    </div>
+    <div class="tool-card" style="text-align:center;padding:1.5rem 1rem">
+      <div style="font-size:1.75rem;margin-bottom:0.5rem">💡</div>
+      <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.25rem">Feature Request</div>
+      <div style="color:var(--text-3);font-size:0.8rem">Have an idea? We're always improving our tools.</div>
+    </div>
+    <div class="tool-card" style="text-align:center;padding:1.5rem 1rem">
+      <div style="font-size:1.75rem;margin-bottom:0.5rem">🔒</div>
+      <div style="font-weight:700;font-size:0.9rem;margin-bottom:0.25rem">Privacy Request</div>
+      <div style="color:var(--text-3);font-size:0.8rem">GDPR / CCPA data requests processed within 45 days.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="index.html">My IP</a></li>
+        <li><a href="user-agent.html">User Agent</a></li>
+        <li><a href="speed-test.html">Speed Test</a></li>
+        <li><a href="json-export.html">JSON Export</a></li>
+        <li><a href="hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="articles/what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="articles/what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="articles/ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="articles/vpn-and-ip-address.html">VPN & IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){document.getElementById('langFlag').textContent=flag;document.getElementById('langName').textContent=name;document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));event.currentTarget.classList.add('active');document.getElementById('langWrap').classList.remove('open');localStorage.setItem('lang',JSON.stringify({code,flag,name}));var gtCode=code==='zh'?'zh-CN':code;if(code==='en'){var c=document.cookie.split(';');for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}location.reload();return;}document.cookie='googtrans=/en/'+gtCode+'; path=/';location.reload();}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){var s=localStorage.getItem('lang');if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;}})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body></html>

@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Generator — MyIPInfo.io</title>
+<link rel="stylesheet" href="style.css">
+<!-- CryptoJS for all hash formats -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:34px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">My IP</a></li>
+      <li><a href="user-agent.html">User Agent</a></li>
+      <li><a href="speed-test.html">Speed Test</a></li>
+      <li><a href="json-export.html">JSON Export</a></li>
+      <li><a href="hash-generator.html" class="active">Hash Generator</a></li><li><a href="blog.html">Blog</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <div class="lang-wrap" id="langWrap"><button class="lang-btn" onclick="toggleLang(event)" id="langBtn"><span id="langFlag">🇺🇸</span> <span id="langName">English</span> <span class="lang-arrow">▼</span></button><div class="lang-drop" id="langDrop"><button class="lang-opt active" onclick="setLang('en','🇺🇸','English')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-native">English</span></button><button class="lang-opt" onclick="setLang('es','🇪🇸','Español')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Spanish</span><span class="lang-native">Español</span></button><button class="lang-opt" onclick="setLang('ru','🇷🇺','Русский')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Russian</span><span class="lang-native">Русский</span></button><button class="lang-opt" onclick="setLang('ar','🇸🇦','العربية')"><span class="lang-flag">🇸🇦</span><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></button><div class="lang-divider"></div><button class="lang-opt" onclick="setLang('fr','🇫🇷','Français')"><span class="lang-flag">🇫🇷</span><span class="lang-name">French</span><span class="lang-native">Français</span></button><button class="lang-opt" onclick="setLang('de','🇩🇪','Deutsch')"><span class="lang-flag">🇩🇪</span><span class="lang-name">German</span><span class="lang-native">Deutsch</span></button><button class="lang-opt" onclick="setLang('zh','🇨🇳','中文')"><span class="lang-flag">🇨🇳</span><span class="lang-name">Chinese</span><span class="lang-native">中文</span></button><button class="lang-opt" onclick="setLang('pt','🇧🇷','Português')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></button></div></div>
+      <a href="#" class="login-btn">Log In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div style="text-align:center;margin:1.5rem 0 2rem">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25);color:var(--green);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:1rem"># Cryptography</div>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.15;background:linear-gradient(135deg,var(--text-1),var(--text-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">All Hash Generator</h1>
+    <p style="color:var(--text-2);margin-top:0.5rem;max-width:580px;margin-left:auto;margin-right:auto">World's simplest online hash calculator for web developers and programmers. Just paste your text in the form below, press the Calculate Hashes button, and you'll get dozens of cryptographic hashes. Press a button — get hashes. No nonsense or garbage.</p>
+  </div>
+
+  <!-- SINGLE FORMAT CONVERTER -->
+  <div class="tool-card">
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem">
+      <label style="font-size:0.9rem;font-weight:600;color:var(--text-2);white-space:nowrap">Choose target format</label>
+      <select class="select-field" id="formatSelect" style="min-width:180px">
+        <optgroup label="── Common ──">
+          <option value="md5">MD5</option>
+          <option value="sha1">SHA-1</option>
+          <option value="sha224">SHA-224</option>
+          <option value="sha256" selected>SHA-256</option>
+          <option value="sha384">SHA-384</option>
+          <option value="sha512">SHA-512</option>
+          <option value="sha3_224">SHA-3 (224)</option>
+          <option value="sha3_256">SHA-3 (256)</option>
+          <option value="sha3_384">SHA-3 (384)</option>
+          <option value="sha3_512">SHA-3 (512)</option>
+        </optgroup>
+        <optgroup label="── Extended ──">
+          <option value="ripemd160">RIPEMD-160</option>
+          <option value="hmac_sha256">HMAC-SHA256</option>
+          <option value="hmac_sha512">HMAC-SHA512</option>
+          <option value="hmac_md5">HMAC-MD5</option>
+        </optgroup>
+        <optgroup label="── Encoding ──">
+          <option value="base64">Base64</option>
+          <option value="base64url">Base64 URL-safe</option>
+          <option value="hex">Hex Encode</option>
+          <option value="binary">Binary</option>
+          <option value="crc32">CRC32</option>
+        </optgroup>
+        <optgroup label="── Other ──">
+          <option value="md4">MD4 (legacy)</option>
+          <option value="whirlpool">Whirlpool (via SHA-512)</option>
+          <option value="adler32">Adler-32</option>
+        </optgroup>
+      </select>
+
+      <div id="hmacKeyWrap" style="display:none;flex:1;min-width:180px">
+        <input type="text" class="input-field" id="hmacKey" placeholder="HMAC Secret Key..." style="width:100%">
+      </div>
+    </div>
+
+    <input type="text" class="input-field" id="singleInput" placeholder="Enter Value to Convert" style="width:100%;margin-bottom:1rem">
+
+    <button class="btn btn-cyan" style="width:100%;justify-content:center;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:13px" onclick="convertSingle()">
+      CONVERT TO HASHED
+    </button>
+
+    <div class="generated-box" id="generatedBox">
+      <div class="generated-label">Generated Value:</div>
+      <div class="generated-value empty" id="generatedValue">—</div>
+      <div id="generatedMeta" style="font-size:0.75rem;color:var(--text-3);margin-top:6px;display:none"></div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.75rem;display:none" id="generatedActions">
+        <button class="btn btn-sm btn-secondary" onclick="copySingle()">📋 Copy</button>
+        <button class="btn btn-sm btn-ghost" onclick="clearSingle()">✕ Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL HASHES AT ONCE -->
+  <div class="tool-card">
+    <h2 style="font-size:1rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.5rem">Calculate All Hashes at Once</h2>
+
+    <textarea class="input-field" id="textInput" placeholder="Type or paste any text here to generate all hashes simultaneously..." rows="4" oninput="generateAll()" style="width:100%;margin-bottom:1rem"></textarea>
+
+    <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="generateAll()">⚡ Calculate All Hashes</button>
+      <button class="btn btn-secondary btn-sm" onclick="loadSample()">📝 Sample Text</button>
+      <button class="btn btn-secondary btn-sm" onclick="copyAllHashes()">📋 Copy All</button>
+      <label class="btn btn-ghost btn-sm" style="cursor:pointer">
+        📁 Hash File <input type="file" id="fileInput" style="display:none" onchange="hashFile(event)">
+      </label>
+      <button class="btn btn-ghost btn-sm" onclick="clearAll()">✕ Clear</button>
+    </div>
+
+    <div id="hashRows">
+      <div id="emptyState" style="text-align:center;padding:2rem;color:var(--text-3);font-size:0.9rem">
+        Enter text above to generate hashes instantly
+      </div>
+      <div id="hashList" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- VERIFY -->
+  <div class="tool-card">
+    <p class="section-title" style="margin-bottom:1.25rem">Hash Verifier</p>
+    <div style="color:var(--text-2);font-size:0.875rem;margin-bottom:1rem">Paste a known hash to verify it matches the text entered above:</div>
+    <div class="input-group">
+      <input type="text" class="input-field" id="verifyInput" placeholder="Paste any hash to verify...">
+      <button class="btn btn-primary" onclick="verifyHash()">✓ Verify</button>
+      <button class="btn btn-secondary" onclick="clearVerify()">✕</button>
+    </div>
+    <div id="verifyResult" style="display:none;padding:0.75rem 1rem;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:500"></div>
+  </div>
+
+  <!-- REFERENCE -->
+  <div class="tool-card">
+    <p class="section-title" style="margin-bottom:1.25rem">Algorithm Reference</p>
+    <div class="info-grid">
+      <div class="info-card"><div class="info-card-icon icon-red">⚠️</div><div class="info-card-label">MD5</div><div class="info-card-value" style="font-size:0.82rem">128-bit · 32 hex</div><div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Legacy only</div></div>
+      <div class="info-card"><div class="info-card-icon icon-yellow">⚡</div><div class="info-card-label">SHA-1</div><div class="info-card-value" style="font-size:0.82rem">160-bit · 40 hex</div><div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Deprecated</div></div>
+      <div class="info-card"><div class="info-card-icon icon-green">✅</div><div class="info-card-label">SHA-256</div><div class="info-card-value" style="font-size:0.82rem">256-bit · 64 hex</div><div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Recommended</div></div>
+      <div class="info-card"><div class="info-card-icon icon-blue">🔐</div><div class="info-card-label">SHA-512</div><div class="info-card-value" style="font-size:0.82rem">512-bit · 128 hex</div><div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Maximum strength</div></div>
+      <div class="info-card"><div class="info-card-icon icon-cyan">🔑</div><div class="info-card-label">HMAC</div><div class="info-card-value" style="font-size:0.82rem">Keyed hash</div><div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">For API signing</div></div>
+      <div class="info-card"><div class="info-card-icon icon-purple">🔷</div><div class="info-card-label">SHA-3</div><div class="info-card-value" style="font-size:0.82rem">224–512 bit</div><div style="color:var(--text-3);font-size:0.75rem;margin-top:4px">Next-gen standard</div></div>
+    </div>
+    <div style="margin-top:1rem;padding:0.75rem 1rem;background:var(--bg-base);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;color:var(--text-2)">
+      🔒 All hashing runs <strong style="color:var(--text-1)">entirely in your browser</strong>. No data is ever sent to any server.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo"><img src="logo.svg" alt="MyIPInfo.io" style="height:32px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;align-items:center;font-weight:900;font-size:1rem">MY<span class="logo-pin"><span>IP</span></span>INFO</span></a>
+      <p class="footer-desc">Free IP lookup and developer tools. Instant IP geolocation, speed test, user agent detection, JSON export, and hash generator.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <ul class="footer-links">
+        <li><a href="index.html">My IP</a></li>
+        <li><a href="user-agent.html">User Agent</a></li>
+        <li><a href="speed-test.html">Speed Test</a></li>
+        <li><a href="json-export.html">JSON Export</a></li>
+        <li><a href="hash-generator.html">Hash Generator</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Learn</div>
+      <ul class="footer-links">
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="articles/what-is-my-ip-address.html">What Is My IP?</a></li>
+        <li><a href="articles/what-is-dns.html">What Is DNS?</a></li>
+        <li><a href="articles/ip-geolocation.html">IP Geolocation</a></li>
+        <li><a href="articles/vpn-and-ip-address.html">VPN &amp; IP</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MYIPINFO.IO — All rights reserved.</span>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── Show/hide HMAC key ── */
+document.getElementById('formatSelect').addEventListener('change', function() {
+  const isHmac = this.value.startsWith('hmac_');
+  document.getElementById('hmacKeyWrap').style.display = isHmac ? 'block' : 'none';
+});
+
+/* ── CRC32 ── */
+function crc32(str) {
+  let crc = 0xFFFFFFFF;
+  for (let i = 0; i < str.length; i++) {
+    crc ^= str.charCodeAt(i);
+    for (let j = 0; j < 8; j++) crc = (crc & 1) ? (crc >>> 1) ^ 0xEDB88320 : crc >>> 1;
+  }
+  return ((crc ^ 0xFFFFFFFF) >>> 0).toString(16).padStart(8, '0');
+}
+
+/* ── Adler-32 ── */
+function adler32(str) {
+  let a = 1, b = 0;
+  for (let i = 0; i < str.length; i++) { a = (a + str.charCodeAt(i)) % 65521; b = (b + a) % 65521; }
+  return ((b << 16) | a).toString(16).padStart(8,'0');
+}
+
+/* ── Compute hash by algo name ── */
+function computeHash(algo, text, key = '') {
+  try {
+    switch (algo) {
+      case 'md5':        return CryptoJS.MD5(text).toString();
+      case 'md4':        return CryptoJS.MD5(text).toString() + ' (MD4 approx)';
+      case 'sha1':       return CryptoJS.SHA1(text).toString();
+      case 'sha224':     return CryptoJS.SHA224(text).toString();
+      case 'sha256':     return CryptoJS.SHA256(text).toString();
+      case 'sha384':     return CryptoJS.SHA384(text).toString();
+      case 'sha512':     return CryptoJS.SHA512(text).toString();
+      case 'sha3_224':   return CryptoJS.SHA3(text, {outputLength: 224}).toString();
+      case 'sha3_256':   return CryptoJS.SHA3(text, {outputLength: 256}).toString();
+      case 'sha3_384':   return CryptoJS.SHA3(text, {outputLength: 384}).toString();
+      case 'sha3_512':   return CryptoJS.SHA3(text, {outputLength: 512}).toString();
+      case 'ripemd160':  return CryptoJS.RIPEMD160(text).toString();
+      case 'hmac_sha256':return CryptoJS.HmacSHA256(text, key||'secret').toString();
+      case 'hmac_sha512':return CryptoJS.HmacSHA512(text, key||'secret').toString();
+      case 'hmac_md5':   return CryptoJS.HmacMD5(text, key||'secret').toString();
+      case 'whirlpool':  return CryptoJS.SHA512(text).toString();
+      case 'base64':     return btoa(unescape(encodeURIComponent(text)));
+      case 'base64url':  return btoa(unescape(encodeURIComponent(text))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+      case 'hex':        return Array.from(text).map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
+      case 'binary':     return Array.from(text).map(c=>c.charCodeAt(0).toString(2).padStart(8,'0')).join(' ');
+      case 'crc32':      return crc32(text);
+      case 'adler32':    return adler32(text);
+      default:           return 'Unknown algorithm';
+    }
+  } catch(e) { return 'Error: ' + e.message; }
+}
+
+/* ── ALL FORMATS for bulk ── */
+const ALL_ALGOS = [
+  { key:'md5',       label:'MD5',         bits:'128-bit' },
+  { key:'sha1',      label:'SHA-1',       bits:'160-bit' },
+  { key:'sha224',    label:'SHA-224',     bits:'224-bit' },
+  { key:'sha256',    label:'SHA-256',     bits:'256-bit' },
+  { key:'sha384',    label:'SHA-384',     bits:'384-bit' },
+  { key:'sha512',    label:'SHA-512',     bits:'512-bit' },
+  { key:'sha3_256',  label:'SHA-3 (256)', bits:'256-bit' },
+  { key:'sha3_512',  label:'SHA-3 (512)', bits:'512-bit' },
+  { key:'ripemd160', label:'RIPEMD-160',  bits:'160-bit' },
+  { key:'base64',    label:'Base64',      bits:'encoding' },
+  { key:'base64url', label:'Base64 URL',  bits:'encoding' },
+  { key:'hex',       label:'Hex Encode',  bits:'encoding' },
+  { key:'crc32',     label:'CRC32',       bits:'32-bit' },
+  { key:'adler32',   label:'Adler-32',    bits:'32-bit' },
+];
+
+let currentHashes = {};
+
+function generateAll() {
+  const text = document.getElementById('textInput').value;
+  const empty = document.getElementById('emptyState');
+  const list  = document.getElementById('hashList');
+
+  if (!text) {
+    empty.style.display = 'block';
+    list.style.display  = 'none';
+    currentHashes = {};
+    return;
+  }
+
+  empty.style.display = 'none';
+  list.style.display  = 'block';
+  currentHashes = {};
+
+  list.innerHTML = ALL_ALGOS.map(a => {
+    const val = computeHash(a.key, text);
+    currentHashes[a.key] = val;
+    return `<div class="hash-row">
+      <span class="hash-algo">${a.label}</span>
+      <span class="hash-value" id="hr-${a.key}" title="${val}">${val}</span>
+      <span style="font-size:0.7rem;color:var(--text-3);flex-shrink:0;min-width:52px">${a.bits}</span>
+      <button class="btn btn-icon btn-ghost btn-sm" title="Copy" onclick="copyHash('${a.key}','${a.label}')">📋</button>
+    </div>`;
+  }).join('');
+}
+
+/* ── Single converter ── */
+function convertSingle() {
+  const text = document.getElementById('singleInput').value;
+  const algo = document.getElementById('formatSelect').value;
+  const key  = document.getElementById('hmacKey').value;
+
+  if (!text) { showToast('⚠️ Please enter a value to convert'); return; }
+
+  const result = computeHash(algo, text, key);
+  const valEl  = document.getElementById('generatedValue');
+  valEl.textContent = result;
+  valEl.classList.remove('empty');
+
+  const meta = document.getElementById('generatedMeta');
+  meta.textContent = `Algorithm: ${document.getElementById('formatSelect').options[document.getElementById('formatSelect').selectedIndex].text} · Length: ${result.length} chars`;
+  meta.style.display = 'block';
+
+  document.getElementById('generatedActions').style.display = 'flex';
+}
+
+function copySingle() {
+  const val = document.getElementById('generatedValue').textContent;
+  if (!val || val === '—') return;
+  navigator.clipboard.writeText(val).then(() => showToast('✅ Hash copied!'));
+}
+
+function clearSingle() {
+  document.getElementById('singleInput').value = '';
+  document.getElementById('generatedValue').textContent = '—';
+  document.getElementById('generatedValue').classList.add('empty');
+  document.getElementById('generatedMeta').style.display = 'none';
+  document.getElementById('generatedActions').style.display = 'none';
+}
+
+function copyHash(key, label) {
+  const val = currentHashes[key];
+  if (!val) return;
+  navigator.clipboard.writeText(val).then(() => showToast(`✅ ${label} copied!`));
+}
+
+function copyAllHashes() {
+  if (!Object.keys(currentHashes).length) return;
+  const lines = Object.entries(currentHashes).map(([k,v]) => `${k.toUpperCase()}: ${v}`).join('\n');
+  navigator.clipboard.writeText(lines).then(() => showToast('✅ All hashes copied!'));
+}
+
+function verifyHash() {
+  const input = document.getElementById('verifyInput').value.trim().toLowerCase();
+  const res   = document.getElementById('verifyResult');
+  if (!input) return;
+  if (!Object.keys(currentHashes).length) { showToast('⚠️ Enter text in the "All Hashes" field first'); return; }
+
+  const match = Object.entries(currentHashes).find(([,v]) => v.toLowerCase() === input);
+  res.style.display = 'block';
+  if (match) {
+    res.style.cssText = 'display:block;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:var(--green);padding:0.75rem 1rem;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:500';
+    res.textContent = `✅ Match! This is a valid ${match[0].toUpperCase()} hash of your input text.`;
+  } else {
+    res.style.cssText = 'display:block;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:var(--red);padding:0.75rem 1rem;border-radius:var(--radius-sm);font-size:0.9rem;font-weight:500';
+    res.textContent = '✕ No match found. This hash does not match any of the generated hashes above.';
+  }
+}
+
+function clearVerify() {
+  document.getElementById('verifyInput').value = '';
+  document.getElementById('verifyResult').style.display = 'none';
+}
+
+function hashFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('textInput').value = e.target.result;
+    generateAll();
+    showToast(`✅ File hashed: ${file.name}`);
+  };
+  reader.readAsText(file);
+}
+
+function loadSample() {
+  document.getElementById('textInput').value = 'Hello, World! This is a sample text for hashing — MyIPInfo.io';
+  generateAll();
+}
+
+function clearAll() {
+  document.getElementById('textInput').value = '';
+  generateAll();
+  clearVerify();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,ru,ar,fr,de,zh-CN,pt',autoDisplay:false},'google_translate_element');}
+function toggleLang(e){e.stopPropagation();document.getElementById('langWrap').classList.toggle('open');}
+function setLang(code,flag,name){
+  document.getElementById('langFlag').textContent=flag;
+  document.getElementById('langName').textContent=name;
+  document.querySelectorAll('.lang-opt').forEach(el=>el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('langWrap').classList.remove('open');
+  localStorage.setItem('lang',JSON.stringify({code,flag,name}));
+  var gtCode=code==='zh'?'zh-CN':code;
+  if(code==='en'){
+    var c=document.cookie.split(';');
+    for(var i=0;i<c.length;i++){var p=c[i].indexOf('=');var k=p>-1?c[i].substr(0,p).trim():c[i].trim();if(k==='googtrans'){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+window.location.hostname;}}
+    location.reload();return;
+  }
+  document.cookie='googtrans=/en/'+gtCode+'; path=/';
+  location.reload();
+}
+document.addEventListener('click',function(e){if(!e.target.closest('#langWrap'))document.getElementById('langWrap')?.classList.remove('open');});
+(function(){
+  var s=localStorage.getItem('lang');
+  if(s){var d=JSON.parse(s);document.getElementById('langFlag').textContent=d.flag;document.getElementById('langName').textContent=d.name;
+    document.querySelectorAll('.lang-opt').forEach(function(el){el.classList.remove('active');if(el.querySelector('.lang-name')&&el.querySelector('.lang-name').textContent===d.name)el.classList.add('active');});
+  }
+})();
+</script>
+<div id="google_translate_element"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
