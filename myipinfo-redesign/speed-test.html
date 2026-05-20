@@ -340,5 +340,9 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 </script>
+<script>
+function toggleMobileNav(){var l=document.querySelector('.nav-links'),b=document.querySelector('.nav-hamburger');l.classList.toggle('mobile-open');b.innerHTML=l.classList.contains('mobile-open')?'&#10005;':'&#9776;';}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){var l=document.querySelector('.nav-links'),b=document.querySelector('.nav-hamburger');l.classList.remove('mobile-open');if(b)b.innerHTML='&#9776;';});});});
+</script>
 </body>
 </html>
